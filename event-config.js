@@ -3,32 +3,8 @@
  * Edite só este bloco para plugar o evento em produção.
  */
 export const CONFIG = {
-  // E-mail que recebe cada inscrição via FormSubmit.
-  EMAIL_DESTINO: "lamparinajus@gmail.com",
-
-  // URL do Web App do Google Apps Script (deixe "" para desativar o envio à planilha).
-  // Passo a passo para criar o webhook do Sheets:
-  // 1. Crie uma planilha no Google Sheets com as colunas:
-  //    nome | whatsapp | email | area | tamanho | utm_source | utm_medium | utm_campaign | utm_content | utm_term | data_hora
-  // 2. Menu Extensões > Apps Script.
-  // 3. Cole o código abaixo no editor:
-  //
-  //    function doPost(e) {
-  //      const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  //      const data = JSON.parse(e.postData.contents);
-  //      sheet.appendRow([
-  //        data.nome, data.whatsapp, data.email, data.area, data.tamanho,
-  //        data.utm_source, data.utm_medium, data.utm_campaign, data.utm_content, data.utm_term,
-  //        data.data_hora
-  //      ]);
-  //      return ContentService.createTextOutput(JSON.stringify({ ok: true }))
-  //        .setMimeType(ContentService.MimeType.JSON);
-  //    }
-  //
-  // 4. Implantar > Nova implantação > tipo "App da Web".
-  // 5. Executar como "Eu", acesso "Qualquer pessoa".
-  // 6. Copie a URL gerada e cole abaixo.
-  SHEETS_WEBHOOK_URL: "",
+  // Endpoint PHP que envia o e-mail (Brevo) e grava na planilha. Configuração em api/config.php.
+  API_URL: "./api/inscricao.php",
 
   // Link do grupo de WhatsApp já existente do Advocacia de Sucesso.
   GROUP_URL: "https://chat.whatsapp.com/JaOauBnZtcNJCrZVyGDAaw?s=cl&p=i&mlu=0&ilr=4",
@@ -83,35 +59,14 @@ export function getStoredUTMs() {
   }
 }
 
-// Envia a inscrição por e-mail (FormSubmit) e, se configurado, para o webhook do Sheets.
+// Envia a inscrição para o backend PHP (Brevo + planilha).
 export async function submitInscricao(payload) {
-  const body = {
-    ...payload,
-    _subject: "Nova inscrição · Advocacia de Sucesso 3ª edição",
-    _template: "table",
-    _captcha: "false",
-  };
-
-  const res = await fetch(`https://formsubmit.co/ajax/${CONFIG.EMAIL_DESTINO}`, {
+  const res = await fetch(CONFIG.API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   });
   if (!res.ok) throw new Error("Não foi possível enviar sua inscrição. Tente novamente.");
-
-  if (CONFIG.SHEETS_WEBHOOK_URL) {
-    try {
-      await fetch(CONFIG.SHEETS_WEBHOOK_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    } catch (e) {
-      // Falha no webhook não deve travar o fluxo principal (o e-mail já foi enviado).
-    }
-  }
-
   return true;
 }
 
