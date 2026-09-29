@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Host+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { margin: 0; background: #000; -webkit-font-smoothing: antialiased; }
+    a { color: #FF9152; }
+    a:hover { color: #FFB27A; }
+    @keyframes glowPulse { 0%,100% { opacity: .5; transform: scale(1); } 50% { opacity: .85; transform: scale(1.08); } }
+  </style>
+  <script>
+    (function(id){
+      if (!id) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', id);
+      fbq('track', 'PageView');
+    })("");
+  </script>
+</helmet>
+<div style="background:#000;min-height:100vh;overflow-x:hidden;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;padding:clamp(24px,6vw,64px)">
+  <div style="position:relative;width:100%;max-width:640px">
+    <div style="position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.28),transparent 70%);filter:blur(50px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite"></div>
+
+    <div style="position:relative;z-index:1;text-align:center">
+      <div style="font-family:'Host Grotesk',sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;color:#8a8a8a;text-transform:uppercase;margin-bottom:24px">Lamparina Jus · Advocacia de Sucesso</div>
+
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" style="margin-bottom:20px">
+        <circle cx="12" cy="12" r="11" fill="rgba(255,106,0,.15)" stroke="#FF6A00" stroke-width="1"></circle>
+        <polyline points="7 12.5 10.3 16 17 8.5" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline>
+      </svg>
+
+      <h1 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(2rem,4vw + 1rem,3rem);line-height:1.1">Inscrição confirmada</h1>
+
+      <p style="margin:20px auto 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:clamp(1rem,.5vw + .9rem,1.125rem);line-height:1.6;max-width:480px">Estamos te levando para o grupo de WhatsApp do Advocacia de Sucesso, onde já estão os advogados das duas primeiras edições. Se nada acontecer em alguns segundos, clique no botão abaixo.</p>
+
+      <div style="margin-top:28px;height:4px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden;max-width:280px;margin-inline:auto">
+        <div ref="{{ progressRef }}" style="height:100%;width:0%;background:linear-gradient(90deg,#FF6A00,#FF9152);border-radius:999px;transition:width 5s linear"></div>
+      </div>
+
+      <a href="{{ groupUrl }}" rel="noopener noreferrer" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;padding:18px 36px;min-height:56px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Entrar no grupo do WhatsApp</a>
+
+      <p style="margin:20px auto 0;font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:14px;line-height:1.6;max-width:440px">Dentro do grupo você recebe o acesso ao evento e os avisos antes do início.</p>
+
+      <div style="margin-top:40px;display:flex;flex-direction:column;gap:16px;text-align:left">
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 24px">
+          <p style="margin:0;font-family:'DM Sans',sans-serif;color:#e5e5e5;font-size:14px;line-height:1.6"><strong style="color:#fff;font-family:'Host Grotesk',sans-serif">Anote na agenda:</strong> quarta-feira, 14 de outubro, às 19h30, com Dr. Simão Rebelo, Jhon Gomes e Dr. Odilon Caetano Jr.</p>
+        </div>
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 24px">
+          <p style="margin:0;font-family:'DM Sans',sans-serif;color:#e5e5e5;font-size:14px;line-height:1.6"><strong style="color:#fff;font-family:'Host Grotesk',sans-serif">Lembrete:</strong> quem participar do início ao fim leva um presente exclusivo do Advocacia de Sucesso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { groupUrl: "" };
+
+  async componentDidMount() {
+    const configModule = await import("./event-config.js");
+    const { CONFIG, getStoredUTMs, getInscricaoLocal } = configModule;
+    this.setState({ groupUrl: CONFIG.GROUP_URL });
+
+    const utms = getStoredUTMs();
+    const inscricao = getInscricaoLocal();
+    if (window.fbq) {
+      window.fbq("track", "Lead", { ...utms, ...(inscricao || {}) });
+    }
+
+    requestAnimationFrame(() => {
+      if (this.progressEl) this.progressEl.style.width = "100%";
+    });
+
+    this.redirectTimer = window.setTimeout(() => {
+      if (CONFIG.GROUP_URL) window.location.href = CONFIG.GROUP_URL;
+    }, 5000);
+  }
+
+  componentWillUnmount() {
+    if (this.redirectTimer) window.clearTimeout(this.redirectTimer);
+  }
+
+  renderVals() {
+    return {
+      groupUrl: this.state.groupUrl,
+      progressRef: (el) => { this.progressEl = el; },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

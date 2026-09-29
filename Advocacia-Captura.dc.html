@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Host+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; background: #000; -webkit-font-smoothing: antialiased; }
+    a { color: #FF9152; }
+    a:hover { color: #FFB27A; }
+    @keyframes glowPulse { 0%,100% { opacity: .5; transform: scale(1); } 50% { opacity: .85; transform: scale(1.08); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+  <script>
+    (function(id){
+      if (!id) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', id);
+      fbq('track', 'PageView');
+    })("");
+  </script>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#000;min-height:100vh;overflow-x:hidden;font-family:'DM Sans',sans-serif">
+
+<main>
+
+<section data-screen-label="Hero" style="position:relative;overflow:hidden;background:#000;padding:clamp(72px,10vw,120px) 0 clamp(56px,8vw,96px)">
+  <div style="position:absolute;top:-220px;right:-180px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.3),transparent 70%);filter:blur(50px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite"></div>
+  <div style="max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,64px);position:relative;z-index:1">
+    <img src="./assets/lamparina-jus-logo.png" alt="Lamparina Jus" style="height: 65px; width: 136px; display: block; margin-bottom: 32px">
+    <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:center">
+      <div style="flex:1 1 420px;min-width:300px;{{ heroTextRevealStyle }}" data-reveal="1">
+        <span style="display:inline-flex;align-items:center;padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,#3a1c0a,#FF6A00);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase">Advocacia de Sucesso · 3ª Edição</span>
+        <h1 style="margin: 24px 0 0; font-family: 'Host Grotesk',sans-serif; font-weight: 800; color: #fff; font-size: 42px; line-height: 1.15; letter-spacing: -0.01em">Tráfego, vendas e gestão: <br>o que seu escritório precisa para <span style="color: rgb(255, 106, 0);">crescer todos os meses</span></h1>
+        <p style="margin-top:20px;font-family:'DM Sans',sans-serif;font-weight:400;color:#c9c9c9;font-size:clamp(1rem,1vw + 0.85rem,1.15rem);line-height:1.6;max-width:52ch">Dr. Simão Rebelo, Jhon Gomes e Dr. Odilon Caetano Jr. juntos em um só evento, mostrando como atrair clientes pelo digital, vender mais e gerir o escritório com processo.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="#FF9152" stroke-width="1.6"></rect><line x1="3" y1="10" x2="21" y2="10" stroke="#FF9152" stroke-width="1.6"></line><line x1="8" y1="3" x2="8" y2="7" stroke="#FF9152" stroke-width="1.6" stroke-linecap="round"></line><line x1="16" y1="3" x2="16" y2="7" stroke="#FF9152" stroke-width="1.6" stroke-linecap="round"></line></svg>
+            <strong style="font-family:'Host Grotesk',sans-serif;font-weight:700;color:#fff;letter-spacing:.02em;font-size:clamp(1rem,.4vw + .9rem,1.25rem)">Quarta-feira, 14 de outubro · 19h30</strong>
+          </div>
+          <span style="font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:13px;margin-left:30px">Horário de Brasília</span>
+        </div>
+        <button type="button" onclick="{{ scrollToForm }}" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;padding:18px 36px;min-height:56px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Quero participar</button>
+        <p style="margin-top:16px;font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:13px;max-width:46ch;line-height:1.6">Ao se inscrever, você entra no grupo de WhatsApp do Advocacia de Sucesso e recebe lá os avisos e o acesso.</p>
+      </div>
+      <div style="flex:1 1 360px;min-width:280px;display:flex;justify-content:center">
+        <div style="position:relative;width:100%;max-width:420px;{{ heroImageRevealStyle }}" data-reveal="1">
+          <div style="position:absolute;inset:-40px;border-radius:32px;background:radial-gradient(circle,rgba(255,106,0,.35),transparent 70%);filter:blur(50px);z-index:0;animation:glowPulse 7s ease-in-out infinite"></div>
+          <image-slot id="hero-banner" shape="rounded" radius="24" placeholder="Foto: Dr. Simão Rebelo, Jhon Gomes e Dr. Odilon Caetano Jr." style="position:relative;z-index:1;width:100%;aspect-ratio:4/5;display:block;border:1px solid rgba(255,255,255,.1)"></image-slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div ref="{{ heroSentinelRef }}"></div>
+
+<section data-screen-label="Avisos" style="position:relative;background:#000;padding:0 clamp(20px,5vw,64px) clamp(72px,10vw,112px)">
+  <div style="max-width:1000px;margin:0 auto">
+    <div style="background:linear-gradient(90deg,#3a1c0a,#FF6A00);border-radius:14px;padding:14px 28px;text-align:center;margin-bottom:24px">
+      <span style="font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff">Advocacia de Sucesso · 3ª Edição</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px">
+      <div style="flex:1 1 280px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;backdrop-filter:blur(6px)">
+        <div style="font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;color:#FF9152;text-transform:uppercase">Gratuito, mas com compromisso</div>
+        <p style="margin:8px 0 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:14px;line-height:1.6">O Advocacia de Sucesso não tem custo. Preencha o formulário só se você puder comparecer no dia e horário marcados: as vagas são para quem tem esse compromisso, sem faltar depois sem avisar.</p>
+      </div>
+      <div style="flex:1 1 280px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;backdrop-filter:blur(6px)">
+        <div style="font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;color:#FF9152;text-transform:uppercase">Presente para quem fica até o final</div>
+        <p style="margin:8px 0 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:14px;line-height:1.6">Quem participar do encontro do início ao fim leva um presente exclusivo do Advocacia de Sucesso, reservado para quem ficar até o final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Frase de impacto" style="position:relative;overflow:hidden;background:#0a0a0a;padding:clamp(64px,9vw,100px) clamp(20px,5vw,64px)">
+  <div style="position:absolute;top:50%;left:15%;width:400px;height:400px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.18),transparent 70%);filter:blur(60px);pointer-events:none;animation:glowPulse 9s ease-in-out infinite"></div>
+  <div style="position:relative;z-index:1;max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:36px;{{ impactRevealStyle }}" data-reveal="1">
+    <image-slot id="impacto-illustration" shape="rounded" radius="20" placeholder="Ilustração: cliente buscando advogado" style="flex:0 0 140px;width:140px;height:140px;display:block"></image-slot>
+    <p style="flex:1 1 320px;margin:0;font-family:'Host Grotesk',sans-serif;font-weight:700;color:#fff;font-size:clamp(1.4rem,1.6vw + 1rem,2rem);line-height:1.3;min-width:240px">Enquanto você espera a próxima indicação, tem <span style="color:#FF6A00">cliente procurando advogado agora.</span></p>
+  </div>
+</section>
+
+<section data-screen-label="Comunidade" style="position:relative;background:#000;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
+  <div style="max-width:760px;margin:0 auto;text-align:center;{{ communityRevealStyle }}" data-reveal="1">
+    <h2 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15">Um grupo que já vem de duas edições</h2>
+    <p style="margin:20px auto 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:clamp(1rem,.5vw + .9rem,1.125rem);line-height:1.6;max-width:640px">O Advocacia de Sucesso chega à sua 3ª edição. Ao se inscrever, você entra no mesmo grupo de WhatsApp onde já estão os advogados que participaram dos dois primeiros encontros, ativo desde então e usado para trocar experiência entre uma edição e outra.</p>
+    <button type="button" onclick="{{ scrollToForm }}" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;min-height:52px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Quero participar</button>
+  </div>
+</section>
+
+<section data-screen-label="Para quem é" style="position:relative;background:#0a0a0a;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
+  <div style="max-width:1000px;margin:0 auto">
+    <h2 style="margin:0 auto 44px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;max-width:640px;text-align:center;{{ paraQuemHeadingRevealStyle }}" data-reveal="1">Esse evento é para você que:</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+      <sc-for list="{{ checklistItems }}" as="item" hint-placeholder-count="4">
+        <div style="background:linear-gradient(160deg,rgba(255,106,0,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;display:flex;gap:18px;align-items:flex-start;transform:translateY(0);{{ item.revealStyle }}" style-hover="border-color:rgba(255,106,0,.45);box-shadow:0 12px 32px rgba(255,106,0,.12);transform:translateY(-3px)" data-reveal="1">
+          <div style="width:40px;height:40px;flex-shrink:0;border-radius:12px;background:rgba(255,106,0,.14);display:flex;align-items:center;justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <polyline points="4 13 9 18 20 6" stroke="#FF6A00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline>
+            </svg>
+          </div>
+          <p style="margin:0;margin-top:8px;font-family:'DM Sans',sans-serif;color:#e5e5e5;font-size:15px;line-height:1.6">{{ item.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="O que você vai ver" style="position:relative;background:#000;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0 0 48px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;text-align:center;max-width:700px;margin-inline:auto;{{ oQueVerHeadingRevealStyle }}" data-reveal="1">O que vai ser mostrado no dia 14</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+      <sc-for list="{{ overviewCards }}" as="card" hint-placeholder-count="3">
+        <div style="background:linear-gradient(160deg,rgba(255,106,0,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px;{{ card.revealStyle }}" data-reveal="1">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="width:44px;height:44px;flex-shrink:0;border-radius:12px;background:rgba(255,106,0,.12);display:flex;align-items:center;justify-content:center">
+              <sc-if value="{{ card.isAcquisition }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><polyline points="3 17 9 11 13 15 21 6" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline><polyline points="15 6 21 6 21 12" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline></svg></sc-if>
+              <sc-if value="{{ card.isSales }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="4" stroke="#FF6A00" stroke-width="2"></circle><path d="M4 20c0-3 2-5 4-5s4 2 4 5" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" fill="none"></path><path d="M15 5.5c1.2.4 2 1.5 2 2.5s-.8 2.1-2 2.5" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" fill="none"></path><path d="M15.5 15c1.6.3 3 1.9 3 4" stroke="#FF6A00" stroke-width="2" stroke-linecap="round" fill="none"></path></svg></sc-if>
+              <sc-if value="{{ card.isManagement }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="4" width="14" height="17" rx="2" stroke="#FF6A00" stroke-width="1.8"></rect><line x1="8" y1="9" x2="16" y2="9" stroke="#FF6A00" stroke-width="1.8" stroke-linecap="round"></line><line x1="8" y1="13" x2="16" y2="13" stroke="#FF6A00" stroke-width="1.8" stroke-linecap="round"></line><line x1="8" y1="17" x2="13" y2="17" stroke="#FF6A00" stroke-width="1.8" stroke-linecap="round"></line></svg></sc-if>
+            </div>
+            <span style="font-family:'Host Grotesk',sans-serif;font-weight:800;font-size:32px;line-height:1;color:#FF6A00">{{ card.number }}</span>
+          </div>
+          <h3 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:22px;color:#fff">{{ card.title }}</h3>
+          <span style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;color:#FF9152">{{ card.speaker }}</span>
+          <p style="margin:0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:15px;line-height:1.6">{{ card.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Palestrantes" style="position:relative;background:#0a0a0a;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="margin:0 0 48px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;text-align:center;{{ palestrantesHeadingRevealStyle }}" data-reveal="1">Quem vai estar com você</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+      <sc-for list="{{ speakers }}" as="speaker" hint-placeholder-count="3">
+        <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;{{ speaker.revealStyle }}" style-hover="border-color:rgba(255,106,0,.4)" data-reveal="1">
+          <image-slot id="{{ speaker.slotId }}" shape="rect" src="{{ speaker.photo }}" fit="cover" placeholder="{{ speaker.placeholderText }}" style="width:100%;height:280px;display:block"></image-slot>
+          <div style="padding:24px">
+            <h3 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff">{{ speaker.name }}</h3>
+            <div style="margin-top:4px;font-family:'Host Grotesk',sans-serif;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#FF9152">{{ speaker.tag }}</div>
+            <p style="margin:12px 0 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:14px;line-height:1.6">{{ speaker.bio }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Formulário" ref="{{ formSectionRef }}" style="position:relative;overflow:hidden;background:#000;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
+  <div ref="{{ formSentinelRef }}"></div>
+  <div style="position:absolute;top:-160px;left:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.22),transparent 70%);filter:blur(50px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite"></div>
+  <div style="position:relative;z-index:1;max-width:720px;margin:0 auto">
+    <h2 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.4rem,1.6vw + 1rem,2rem);line-height:1.2;text-align:center">Garanta sua vaga na 3ª edição <br>do Advocacia de Sucesso</h2>
+    <p style="margin:12px auto 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:1rem;line-height:1.6;text-align:center;max-width:520px">Preencha os dados abaixo. Ao enviar, você é levado direto ao grupo de WhatsApp com os advogados das edições anteriores.</p>
+
+    <form ref="{{ formRef }}" onsubmit="{{ handleSubmit }}" novalidate="" style="margin-top:40px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:clamp(24px,4vw,48px);backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(0,0,0,.4)">
+
+      <div style="position:relative;margin-bottom:22px">
+        <label for="nome" style="{{ nomeLabelStyle }}">Seu nome</label>
+        <input ref="{{ firstFieldRef }}" id="nome" name="nome" type="text" autocomplete="name" value="{{ form.nome }}" onchange="{{ onNomeChange }}" onfocus="{{ onNomeFocus }}" onblur="{{ onNomeBlur }}" aria-describedby="nome-error" style="width:100%;box-sizing:border-box;min-height:56px;padding:22px 16px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s" style-focus="border-color:#FF6A00">
+        <sc-if value="{{ errors.nome }}"><span id="nome-error" role="alert" style="display:block;margin-top:6px;font-family:'DM Sans',sans-serif;font-size:13px;color:#FF8A65">{{ errors.nome }}</span></sc-if>
+      </div>
+
+      <div style="position:relative;margin-bottom:22px">
+        <label for="whatsapp" style="{{ whatsappLabelStyle }}">Seu WhatsApp</label>
+        <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" value="{{ form.whatsapp }}" onchange="{{ onWhatsappChange }}" onfocus="{{ onWhatsappFocus }}" onblur="{{ onWhatsappBlur }}" aria-describedby="whatsapp-error" style="width:100%;box-sizing:border-box;min-height:56px;padding:22px 16px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s" style-focus="border-color:#FF6A00">
+        <sc-if value="{{ errors.whatsapp }}"><span id="whatsapp-error" role="alert" style="display:block;margin-top:6px;font-family:'DM Sans',sans-serif;font-size:13px;color:#FF8A65">{{ errors.whatsapp }}</span></sc-if>
+      </div>
+
+      <div style="position:relative;margin-bottom:22px">
+        <label for="email" style="{{ emailLabelStyle }}">Seu e-mail</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" value="{{ form.email }}" onchange="{{ onEmailChange }}" onfocus="{{ onEmailFocus }}" onblur="{{ onEmailBlur }}" aria-describedby="email-error" style="width:100%;box-sizing:border-box;min-height:56px;padding:22px 16px 8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s" style-focus="border-color:#FF6A00">
+        <sc-if value="{{ errors.email }}"><span id="email-error" role="alert" style="display:block;margin-top:6px;font-family:'DM Sans',sans-serif;font-size:13px;color:#FF8A65">{{ errors.email }}</span></sc-if>
+      </div>
+
+      <div style="margin-bottom:22px">
+        <label for="area" style="{{ areaLabelStyle }}">Principal área de atuação do seu escritório</label>
+        <select id="area" name="area" value="{{ form.area }}" onchange="{{ onAreaChange }}" onblur="{{ onAreaBlur }}" aria-describedby="area-error" style="width:100%;box-sizing:border-box;min-height:52px;padding:14px 40px 14px 16px;background-color:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a8a' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center" style-focus="border-color:#FF6A00">
+          <option value="">Selecione</option>
+          <sc-for list="{{ areaOptions }}" as="opt" hint-placeholder-count="9"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+        </select>
+        <sc-if value="{{ errors.area }}"><span id="area-error" role="alert" style="display:block;margin-top:6px;font-family:'DM Sans',sans-serif;font-size:13px;color:#FF8A65">{{ errors.area }}</span></sc-if>
+      </div>
+
+      <div style="margin-bottom:8px">
+        <label for="tamanho" style="{{ tamanhoLabelStyle }}">Quantas pessoas trabalham hoje no seu escritório?</label>
+        <select id="tamanho" name="tamanho" value="{{ form.tamanho }}" onchange="{{ onTamanhoChange }}" onblur="{{ onTamanhoBlur }}" aria-describedby="tamanho-error" style="width:100%;box-sizing:border-box;min-height:52px;padding:14px 40px 14px 16px;background-color:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;appearance:none;-webkit-appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8a8a' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 16px center" style-focus="border-color:#FF6A00">
+          <option value="">Selecione</option>
+          <sc-for list="{{ tamanhoOptions }}" as="opt" hint-placeholder-count="4"><option value="{{ opt }}">{{ opt }}</option></sc-for>
+        </select>
+        <sc-if value="{{ errors.tamanho }}"><span id="tamanho-error" role="alert" style="display:block;margin-top:6px;font-family:'DM Sans',sans-serif;font-size:13px;color:#FF8A65">{{ errors.tamanho }}</span></sc-if>
+      </div>
+
+      <div style="margin-top:24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 24px">
+        <div style="font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;color:#FF9152;text-transform:uppercase">Gratuito, mas com compromisso</div>
+        <p style="margin:8px 0 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:14px;line-height:1.6">O Advocacia de Sucesso não tem custo. Preencha o formulário só se você puder comparecer no dia e horário marcados: as vagas são para quem tem esse compromisso, sem faltar depois sem avisar.</p>
+      </div>
+
+      <button type="submit" disabled="{{ isLoading }}" style="margin-top:24px;width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, opacity .2s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">
+        <sc-if value="{{ isLoading }}"><span style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .7s linear infinite;display:inline-block"></span></sc-if>
+        {{ buttonLabel }}
+      </button>
+
+      <sc-if value="{{ isError }}"><p role="alert" style="margin:16px 0 0;font-family:'DM Sans',sans-serif;color:#FF8A65;font-size:14px;text-align:center">{{ errorMessage }}</p></sc-if>
+
+      <p style="margin:16px 0 0;font-family:'DM Sans',sans-serif;color:#8a8a8a;font-size:12px;text-align:center;line-height:1.6">Seus dados estão seguros e serão usados apenas para o contato sobre o Advocacia de Sucesso.</p>
+    </form>
+  </div>
+</section>
+
+<section data-screen-label="Segurança OAB" style="background:#0a0a0a;padding:32px 24px;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)">
+  <div style="max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:left">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0; width: 38px; height: 41px">
+      <circle cx="12" cy="12" r="11" fill="rgba(255,106,0,.12)" stroke="rgba(255,106,0,.35)"></circle>
+      <polyline points="7 12.5 10.3 16 17 8.5" stroke="#FF9152" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline>
+    </svg>
+    <p style="margin: 0; font-family: 'DM Sans',sans-serif; color: #c9c9c9; font-size: 19px; line-height: 1.6; max-width: 560px">Tudo o que será apresentado segue o Código de Ética da OAB, sem promessa de resultado e sem captação proibida.</p>
+  </div>
+</section>
+
+<section data-screen-label="Chamada final" style="position:relative;overflow:hidden;background:#000;padding:clamp(80px,12vw,140px) clamp(20px,5vw,64px);text-align:center">
+  <div style="position:absolute;top:50%;left:50%;width:700px;height:700px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.2),transparent 70%);filter:blur(60px);pointer-events:none;animation:glowPulse 9s ease-in-out infinite"></div>
+  <div style="position:relative;z-index:1;{{ ctaFinalRevealStyle }}" data-reveal="1">
+    <h2 style="margin:0 auto;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,2vw + 1rem,2.25rem);line-height:1.2;max-width:800px">Quantas pessoas procuraram um advogado na sua área essa semana e não encontraram o seu escritório?</h2>
+    <div style="margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:6px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="#FF9152" stroke-width="1.6"></rect><line x1="3" y1="10" x2="21" y2="10" stroke="#FF9152" stroke-width="1.6"></line><line x1="8" y1="3" x2="8" y2="7" stroke="#FF9152" stroke-width="1.6" stroke-linecap="round"></line><line x1="16" y1="3" x2="16" y2="7" stroke="#FF9152" stroke-width="1.6" stroke-linecap="round"></line></svg>
+        <strong style="font-family:'Host Grotesk',sans-serif;font-weight:700;color:#fff;letter-spacing:.02em;font-size:clamp(1rem,.4vw + .9rem,1.25rem)">Quarta-feira, 14 de outubro · 19h30</strong>
+      </div>
+      <span style="font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:13px">Horário de Brasília</span>
+    </div>
+    <button type="button" onclick="{{ scrollToForm }}" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;padding:18px 36px;min-height:56px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Quero participar</button>
+    <p style="margin:20px auto 0;font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:14px;line-height:1.6;max-width:520px">Você entra no grupo de WhatsApp do Advocacia de Sucesso assim que se inscrever, ao lado dos advogados das duas primeiras edições. E quem fica até o final ainda leva um presente exclusivo.</p>
+  </div>
+</section>
+
+<footer style="background:#000;border-top:1px solid rgba(255,255,255,.06);padding:40px 24px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:10px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="./assets/lamparina-jus-logo.png" alt="Lamparina Jus" style="height: 32px; width: 63px; display: block">
+      <span style="font-family: 'Host Grotesk',sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .06em; color: #888; text-transform: uppercase">· Advocacia de Sucesso</span>
+    </div>
+    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#444">© 2026 · Todos os direitos reservados</span>
+  </div>
+</footer>
+
+</main>
+
+<sc-if value="{{ showStickyBar }}">
+  <div style="position:fixed;bottom:0;left:0;right:0;z-index:50;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(0,0,0,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.1)">
+    <button type="button" onclick="{{ scrollToForm }}" style="width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(255,106,0,.4)">Quero participar</button>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    form: { nome: "", whatsapp: "", email: "", area: "", tamanho: "" },
+    errors: {},
+    activeField: null,
+    status: "idle",
+    errorMessage: "",
+    isMobile: typeof window !== "undefined" && window.innerWidth < 860,
+    pastHero: false,
+    formVisible: false,
+    revealed: {},
+  };
+
+  configModule = null;
+
+  componentDidMount() {
+    this.onResize = () => {
+      this.setState({ isMobile: window.innerWidth < 860 });
+      this.checkScroll();
+    };
+    window.addEventListener("resize", this.onResize);
+
+    this.reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.revealEls = Array.from(document.querySelectorAll("[data-reveal]"));
+
+    this.onScroll = () => this.checkScroll();
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.pollTimer = window.setInterval(() => this.checkScroll(), 150);
+
+    this.checkScroll();
+
+    import("./event-config.js").then((mod) => {
+      this.configModule = mod;
+      mod.captureUTMs();
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("scroll", this.onScroll);
+    if (this.pollTimer) window.clearInterval(this.pollTimer);
+  }
+
+  checkScroll() {
+    const vh = window.innerHeight;
+    const threshold = this.reduced ? Infinity : vh * 0.92;
+    const isMobile = window.innerWidth < 860;
+    if (isMobile !== this.state.isMobile) this.setState({ isMobile });
+
+    if (this.revealEls && this.revealEls.length) {
+      const updates = {};
+      let changed = false;
+      this.revealEls.forEach((el, i) => {
+        if (this.state.revealed[i]) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top < threshold) { updates[i] = true; changed = true; }
+      });
+      if (changed) this.setState((s) => ({ revealed: { ...s.revealed, ...updates } }));
+    }
+
+    if (this.heroSentinel) {
+      const heroRect = this.heroSentinel.getBoundingClientRect();
+      const pastHero = heroRect.top < 0;
+      if (pastHero !== this.state.pastHero) this.setState({ pastHero });
+    }
+    if (this.formSentinel) {
+      const formRect = this.formSentinel.getBoundingClientRect();
+      const formVisible = formRect.top < vh && formRect.bottom > 0;
+      if (formVisible !== this.state.formVisible) this.setState({ formVisible });
+    }
+  }
+
+  revealStyle(index, delayMs, extraTransition) {
+    const on = !!this.state.revealed[index];
+    return on ? "opacity:1;transform:none" : "opacity:0;transform:translateY(24px)";
+  }
+
+  setField(field, value) {
+    this.setState((s) => ({ form: { ...s.form, [field]: value } }));
+  }
+
+  validate(field, value) {
+    if (!this.configModule) return "";
+    const { isValidEmail, isValidPhone } = this.configModule;
+    switch (field) {
+      case "nome": return value.trim().length >= 3 ? "" : "Digite seu nome completo.";
+      case "whatsapp": return isValidPhone(value) ? "" : "Digite um WhatsApp válido com DDD.";
+      case "email": return isValidEmail(value) ? "" : "Digite um e-mail válido.";
+      case "area": return value ? "" : "Selecione sua área de atuação.";
+      case "tamanho": return value ? "" : "Selecione o tamanho do seu escritório.";
+      default: return "";
+    }
+  }
+
+  handleBlur(field) {
+    this.setState((s) => ({
+      activeField: null,
+      errors: { ...s.errors, [field]: this.validate(field, s.form[field]) },
+    }));
+  }
+
+  labelStyle(field, isSelect) {
+    if (isSelect) {
+      return "display:block;font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#8a8a8a;margin-bottom:8px";
+    }
+    const filled = !!this.state.form[field];
+    const active = this.state.activeField === field;
+    if (filled || active) {
+      return "position:absolute;left:16px;top:8px;font-family:'DM Sans',sans-serif;font-size:11px;color:#FF9152;transition:all .18s ease;pointer-events:none";
+    }
+    return "position:absolute;left:16px;top:18px;font-family:'DM Sans',sans-serif;font-size:15px;color:#8a8a8a;transition:all .18s ease;pointer-events:none";
+  }
+
+  scrollToForm(e) {
+    if (e) e.preventDefault();
+    if (this.formSectionEl) {
+      const rect = this.formSectionEl.getBoundingClientRect();
+      const top = rect.top + window.pageYOffset - 20;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+    window.setTimeout(() => { if (this.firstFieldEl) this.firstFieldEl.focus(); }, 450);
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+    if (!this.configModule) this.configModule = await import("./event-config.js");
+    const { form } = this.state;
+    const errors = {};
+    Object.keys(form).forEach((f) => { errors[f] = this.validate(f, form[f]); });
+    const hasErrors = Object.values(errors).some(Boolean);
+    this.setState({ errors });
+    if (hasErrors) {
+      const firstBad = Object.keys(errors).find((f) => errors[f]);
+      const el = this.formEl && this.formEl.elements[firstBad];
+      if (el) el.focus();
+      return;
+    }
+    this.setState({ status: "loading", errorMessage: "" });
+    try {
+      const utms = this.configModule.getStoredUTMs();
+      const payload = { ...form, ...utms, data_hora: new Date().toISOString() };
+      await this.configModule.submitInscricao(payload);
+      this.configModule.saveInscricaoLocal(payload);
+      this.setState({ status: "success" });
+      window.setTimeout(() => { window.location.href = "./Advocacia-Obrigado.dc.html"; }, 400);
+    } catch (err) {
+      this.setState({ status: "error", errorMessage: (err && err.message) || "Não foi possível enviar. Tente novamente." });
+    }
+  }
+
+  renderVals() {
+    const { form, errors, status } = this.state;
+    const buttonLabel = status === "loading" ? "Enviando..." : status === "success" ? "Inscrição enviada" : "Quero entrar no grupo";
+    return {
+      rootRef: (el) => { this.root = el; },
+      heroSentinelRef: (el) => { this.heroSentinel = el; },
+      formSentinelRef: (el) => { this.formSentinel = el; },
+      formSectionRef: (el) => { this.formSectionEl = el; },
+      firstFieldRef: (el) => { this.firstFieldEl = el; },
+      formRef: (el) => { this.formEl = el; },
+      showStickyBar: this.state.isMobile && this.state.pastHero && !this.state.formVisible,
+      scrollToForm: (e) => this.scrollToForm(e),
+      handleSubmit: (e) => this.handleSubmit(e),
+      form,
+      errors,
+      nomeLabelStyle: this.labelStyle("nome", false),
+      whatsappLabelStyle: this.labelStyle("whatsapp", false),
+      emailLabelStyle: this.labelStyle("email", false),
+      areaLabelStyle: this.labelStyle("area", true),
+      tamanhoLabelStyle: this.labelStyle("tamanho", true),
+      onNomeChange: (e) => this.setField("nome", e.target.value),
+      onWhatsappChange: (e) => this.setField("whatsapp", this.configModule ? this.configModule.formatPhoneBR(e.target.value) : e.target.value),
+      onEmailChange: (e) => this.setField("email", e.target.value),
+      onAreaChange: (e) => this.setField("area", e.target.value),
+      onTamanhoChange: (e) => this.setField("tamanho", e.target.value),
+      onNomeFocus: () => this.setState({ activeField: "nome" }),
+      onWhatsappFocus: () => this.setState({ activeField: "whatsapp" }),
+      onEmailFocus: () => this.setState({ activeField: "email" }),
+      onNomeBlur: () => this.handleBlur("nome"),
+      onWhatsappBlur: () => this.handleBlur("whatsapp"),
+      onEmailBlur: () => this.handleBlur("email"),
+      onAreaBlur: () => this.handleBlur("area"),
+      onTamanhoBlur: () => this.handleBlur("tamanho"),
+      isLoading: status === "loading",
+      isSuccess: status === "success",
+      isError: status === "error",
+      errorMessage: this.state.errorMessage,
+      buttonLabel,
+      heroTextRevealStyle: this.revealStyle(0, 0),
+      heroImageRevealStyle: this.revealStyle(1, 90),
+      impactRevealStyle: this.revealStyle(2, 0),
+      communityRevealStyle: this.revealStyle(3, 0),
+      paraQuemHeadingRevealStyle: this.revealStyle(4, 0),
+      oQueVerHeadingRevealStyle: this.revealStyle(9, 0),
+      palestrantesHeadingRevealStyle: this.revealStyle(13, 0),
+      ctaFinalRevealStyle: this.revealStyle(17, 0),
+      areaOptions: ["Previdenciário", "Trabalhista", "Tributário", "Bancário / Consumidor", "Família", "Saúde", "Empresarial", "Penal", "Outros"],
+      tamanhoOptions: ["Apenas eu", "2 a 5 pessoas", "6 a 10 pessoas", "Mais de 10"],
+      checklistItems: [
+        "É advogado(a) ou tem escritório e recebe a maioria dos clientes por indicação.",
+        "Já pensou em anunciar, mas ficou com receio de errar com a OAB.",
+        "Já anunciou e não teve o retorno que esperava.",
+        "Recebe contatos de clientes e perde parte deles antes de a conversa virar contrato.",
+      ].map((text, i) => ({ text, revealStyle: this.revealStyle(5 + i, i * 90, "border-color .25s, box-shadow .25s") })),
+      overviewCards: [
+        { number: "01", title: "Aquisição", speaker: "com Dr. Simão Rebelo.", desc: "Como ele usou tráfego pago para ganhar espaço, virar referência na sua área e ter leads e clientes novos todos os dias.", isAcquisition: true },
+        { number: "02", title: "Vendas", speaker: "com Jhon Gomes.", desc: "Como cada canal de aquisição se comporta, como abordar cada um deles e como a IA pode ajudar a vender mais.", isSales: true },
+        { number: "03", title: "Gestão", speaker: "com Dr. Odilon Caetano Jr.", desc: "Como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", isManagement: true },
+      ].map((card, i) => ({ ...card, revealStyle: this.revealStyle(10 + i, i * 90) })),
+      speakers: [
+        { slotId: "speaker-simao", name: "Dr. Simão Rebelo", tag: "Advogado previdenciarista", bio: "Advogado previdenciarista com 6 anos de experiência e atuação digital escalável, atendendo clientes em todo o Brasil pela prospecção estratégica via tráfego pago. No evento, mostra como usou o tráfego pago para ganhar espaço, virar referência na sua área e ter leads e clientes novos todos os dias.", placeholderText: "Foto: Dr. Simão Rebelo", photo: "./assets/speaker-simao.jpeg" },
+        { slotId: "speaker-jhon", name: "Jhon Gomes", tag: "Especialista em vendas e marketing jurídico", bio: "Construiu a carreira na advocacia a partir do marketing jurídico e hoje não atua mais, dedicando-se a ensinar e aplicar isso com outros advogados. No evento, fala sobre vendas: como cada canal de aquisição se comporta, como abordar cada um e como a IA pode ajudar.", placeholderText: "Foto: Jhon Gomes", photo: "./assets/speaker-jhon.png" },
+        { slotId: "speaker-odilon", name: "Dr. Odilon Caetano Jr.", tag: "Sócio da CN Advogados Associados", bio: "Sócio do escritório CN Advogados Associados, especialista em direito empresarial e à frente de um dos maiores escritórios da região. No evento, fala sobre como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", placeholderText: "Foto: Dr. Odilon Caetano Jr.", photo: "./assets/speaker-odilon.jpeg" },
+      ].map((sp, i) => ({ ...sp, revealStyle: this.revealStyle(14 + i, i * 90, "border-color .25s") })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
