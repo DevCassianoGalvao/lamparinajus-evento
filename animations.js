@@ -60,7 +60,7 @@
   // ---------- hero ----------
   function initHero() {
     var hero = document.querySelector('section[data-screen-label="Hero"]');
-    var logo = hero.querySelector(':scope > div:nth-of-type(2) > img');
+    var logo = hero.querySelector('.hero-head');
     var col = hero.querySelector('[data-reveal]');
     var badge = col.querySelector('span');
     var h1 = col.querySelector('h1');

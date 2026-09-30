@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./premium.css">
 <script src="./support.js"></script>
 <script src="./shader-button.js" defer></script>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('anim-pending')}</script>
@@ -16,22 +17,11 @@
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Host+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=DM+Sans:wght@400;500;600&amp;family=Host+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
   <script src="./image-slot.js"></script>
   <style>
     html::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(at 20% 80%,#fff 1px,transparent 0px);background-size:3px 3px;pointer-events:none;z-index:2;opacity:.04;mix-blend-mode:plus-lighter}
     html.anim-pending section[data-screen-label="Hero"] :is(img,span,h1,p,button,strong,svg){opacity:0}
-    @media (max-width:859px){
-      section[data-screen-label="Hero"]{text-align:center}
-      section[data-screen-label="Hero"] > div:nth-of-type(2) > img{margin-left:auto!important;margin-right:auto!important}
-      section[data-screen-label="Hero"] [data-reveal] p{margin-left:auto!important;margin-right:auto!important}
-      section[data-screen-label="Hero"] [data-reveal] > div{align-items:center!important}
-      section[data-screen-label="Hero"] [data-reveal] > div > div{justify-content:center!important}
-      section[data-screen-label="Hero"] [data-reveal] > div > span{margin-left:0!important}
-    }
-    @media (max-width:640px){
-      section[data-screen-label="Para quem é"] div[style*="grid-template"]{grid-template-columns:1fr!important}
-    }
     select option{background-color:#141414;color:#fff}
     body { margin: 0; background: #000; -webkit-font-smoothing: antialiased; }
     a { color: #FF9152; }
@@ -59,7 +49,10 @@
 <section data-screen-label="Hero" style="position:relative;overflow:hidden;background:#000;padding:clamp(72px,10vw,120px) 0 clamp(56px,8vw,96px)">
   <div style="position:absolute;top:-220px;right:-180px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.3),transparent 70%);filter:blur(50px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite"></div>
   <div style="max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,64px);position:relative;z-index:1">
-    <img src="./assets/lamparina-jus-logo.png" alt="Lamparina Jus" style="height: 65px; width: 136px; display: block; margin-bottom: 32px">
+    <div class="hero-head">
+      <img src="./assets/lamparina-jus-logo.png" alt="Lamparina Jus" style="height: 65px; width: 136px; display: block; margin-bottom: 32px">
+      <span>Inscrições abertas</span>
+    </div>
     <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:center">
       <div style="flex:1 1 420px;min-width:300px;{{ heroTextRevealStyle }}" data-reveal="1">
         <span style="display:inline-flex;align-items:center;padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,#3a1c0a,#FF6A00);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase">Advocacia de Sucesso · 3ª Edição</span>
@@ -113,7 +106,7 @@
 
 <section data-screen-label="Comunidade" style="position:relative;background:#000;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
   <div style="max-width:760px;margin:0 auto;text-align:center;{{ communityRevealStyle }}" data-reveal="1">
-    <h2 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15">Um grupo que já vem de duas edições</h2>
+    <h2 data-eyebrow="Comunidade" style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15">Um grupo que já vem de duas edições</h2>
     <p style="margin:20px auto 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:clamp(1rem,.5vw + .9rem,1.125rem);line-height:1.6;max-width:640px">O Advocacia de Sucesso chega à sua 3ª edição. Ao se inscrever, você entra no mesmo grupo de WhatsApp onde já estão os advogados que participaram dos dois primeiros encontros, ativo desde então e usado para trocar experiência entre uma edição e outra.</p>
     <button type="button" onclick="{{ scrollToForm }}" style="margin-top:28px;display:inline-flex;align-items:center;justify-content:center;padding:16px 32px;min-height:52px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Quero participar</button>
   </div>
@@ -121,7 +114,7 @@
 
 <section data-screen-label="Para quem é" style="position:relative;background:#0a0a0a;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
   <div style="max-width:1000px;margin:0 auto">
-    <h2 style="margin:0 auto 44px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;max-width:640px;text-align:center;{{ paraQuemHeadingRevealStyle }}" data-reveal="1">Esse evento é para você que:</h2>
+    <h2 data-eyebrow="01 — Público" style="margin:0 auto 44px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;max-width:640px;text-align:center;{{ paraQuemHeadingRevealStyle }}" data-reveal="1">Esse evento é para você que:</h2>
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
       <sc-for list="{{ checklistItems }}" as="item" hint-placeholder-count="4">
         <div style="background:linear-gradient(160deg,rgba(255,106,0,.07),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;display:flex;gap:18px;align-items:flex-start;transform:translateY(0);{{ item.revealStyle }}" style-hover="border-color:rgba(255,106,0,.45);box-shadow:0 12px 32px rgba(255,106,0,.12);transform:translateY(-3px)" data-reveal="1">
@@ -139,7 +132,7 @@
 
 <section data-screen-label="O que você vai ver" style="position:relative;background:#000;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
   <div style="max-width:1200px;margin:0 auto">
-    <h2 style="margin:0 0 48px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;text-align:center;max-width:700px;margin-inline:auto;{{ oQueVerHeadingRevealStyle }}" data-reveal="1">O que vai ser mostrado no dia 14</h2>
+    <h2 data-eyebrow="02 — Programação" style="margin:0 0 48px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;text-align:center;max-width:700px;margin-inline:auto;{{ oQueVerHeadingRevealStyle }}" data-reveal="1">O que vai ser mostrado no dia 14</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
       <sc-for list="{{ overviewCards }}" as="card" hint-placeholder-count="3">
         <div style="background:linear-gradient(160deg,rgba(255,106,0,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:16px;{{ card.revealStyle }}" data-reveal="1">
@@ -162,7 +155,7 @@
 
 <section data-screen-label="Palestrantes" style="position:relative;background:#0a0a0a;padding:clamp(72px,10vw,120px) clamp(20px,5vw,64px)">
   <div style="max-width:1200px;margin:0 auto">
-    <h2 style="margin:0 0 48px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;text-align:center;{{ palestrantesHeadingRevealStyle }}" data-reveal="1">Quem vai estar com você</h2>
+    <h2 data-eyebrow="03 — Palestrantes" style="margin:0 0 48px;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.5rem,1.8vw + 1rem,2.25rem);line-height:1.15;text-align:center;{{ palestrantesHeadingRevealStyle }}" data-reveal="1">Quem vai estar com você</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
       <sc-for list="{{ speakers }}" as="speaker" hint-placeholder-count="3">
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;{{ speaker.revealStyle }}" style-hover="border-color:rgba(255,106,0,.4)" data-reveal="1">
@@ -182,7 +175,7 @@
   <div ref="{{ formSentinelRef }}"></div>
   <div style="position:absolute;top:-160px;left:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(255,106,0,.22),transparent 70%);filter:blur(50px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite"></div>
   <div style="position:relative;z-index:1;max-width:720px;margin:0 auto">
-    <h2 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.4rem,1.6vw + 1rem,2rem);line-height:1.2;text-align:center">Garanta sua vaga na 3ª edição <br>do Advocacia de Sucesso</h2>
+    <h2 data-eyebrow="Inscrição" style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:800;color:#fff;font-size:clamp(1.4rem,1.6vw + 1rem,2rem);line-height:1.2;text-align:center">Garanta sua vaga na 3ª edição <br>do Advocacia de Sucesso</h2>
     <p style="margin:12px auto 0;font-family:'DM Sans',sans-serif;color:#c9c9c9;font-size:1rem;line-height:1.6;text-align:center;max-width:520px">Preencha os dados abaixo. Ao enviar, você é levado direto ao grupo de WhatsApp com os advogados das edições anteriores.</p>
 
     <form ref="{{ formRef }}" onsubmit="{{ handleSubmit }}" novalidate="" style="margin-top:40px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:clamp(24px,4vw,48px);backdrop-filter:blur(10px);box-shadow:0 20px 60px rgba(0,0,0,.4)">
