@@ -82,21 +82,9 @@
       .to(p, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.5')
       .to(date, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.45')
       .to([cta, note].filter(Boolean), { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.1, clearProps: CLEAR }, '-=0.4')
-      .to(photo, { autoAlpha: 1, x: 0, scale: 1, duration: 1.2, ease: 'power4.out' }, 0.3)
+      .to(photo, { autoAlpha: 1, x: 0, scale: 1, duration: 1.2, ease: 'power4.out', clearProps: CLEAR }, 0.3)
       .add(function () {
         gsap.set([logo, badge, p, date], { clearProps: CLEAR });
-        // flutuar suave + parallax do mouse (propriedades diferentes para não brigar)
-        gsap.to(photo, { yPercent: -2.5, duration: 3.6, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-        if (window.matchMedia('(pointer:fine)').matches) {
-          var qx = gsap.quickTo(photo, 'x', { duration: 0.9, ease: 'power3.out' });
-          var qy = gsap.quickTo(photo, 'y', { duration: 0.9, ease: 'power3.out' });
-          hero.addEventListener('mousemove', function (e) {
-            var r = hero.getBoundingClientRect();
-            qx(((e.clientX - r.left) / r.width - 0.5) * -22);
-            qy(((e.clientY - r.top) / r.height - 0.5) * -16);
-          });
-          hero.addEventListener('mouseleave', function () { qx(0); qy(0); });
-        }
       });
   }
 

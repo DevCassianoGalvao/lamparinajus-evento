@@ -508,9 +508,4 @@ button[style*="uppercase"][disabled] { opacity: .7; cursor: progress; }
 }
 .meet-line svg { width: 20px; height: 16px; flex: none; }
 
-/* arte da hero: exibida como é (retângulo, sem esfumar), só com cantos levemente arredondados */
-section[data-screen-label="Hero"] img[src*="hero-palestrantes"] {
-  border-radius: 6px;
-  margin-top: 0 !important;
-}
 section[data-screen-label="Hero"] div[style*="360px"] { flex: 1.25 1 420px !important; }
