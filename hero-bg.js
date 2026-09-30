@@ -6,7 +6,8 @@
   var SECTION_SEL = 'section[data-screen-label="Hero"]';
   var OPACITY = 0.15;
   var SPEED = 0.3; // 1 = velocidade original do componente
-  var RENDER_SCALE = 0.5; // resolução interna relativa ao CSS (o shader é pesado e fica suave mesmo assim)
+  var RENDER_SCALE = Math.min(window.devicePixelRatio || 1, 1.25); // nitidez: 1 pixel de render por pixel CSS (limitado p/ não pesar)
+  var FRAME_MS = 1000 / 30; // 30 fps: o movimento é lento, ninguém nota, e a GPU agradece
 
   // Shape "Silken Twist" + paleta "Solar Ember"; fundo preto para combinar com a hero.
   var U = { FLOW_SPEED: .553, FLOW_DIRECTION: -1.43, ZOOM: 1.59, TILT: -2.8, POSITION_X: -.21, POSITION_Y: .06,
@@ -94,7 +95,10 @@
     if (!state) return;
     if (!state.section.isConnected) { state = null; scan(); return; }
     if (!state.cv.isConnected) state.section.insertBefore(state.cv, state.section.firstChild);
-    if (state.visible && document.visibilityState !== 'hidden') draw(((now - t0) / 1000) * SPEED);
+    if (state.visible && document.visibilityState !== 'hidden' && now - (state.last || 0) >= FRAME_MS - 1) {
+      state.last = now;
+      draw(((now - t0) / 1000) * SPEED);
+    }
     if (!reduced) raf = requestAnimationFrame(frame);
   }
 

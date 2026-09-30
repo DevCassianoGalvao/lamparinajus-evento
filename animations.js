@@ -17,9 +17,9 @@
   // ---------- CSS: transições suaves + hover/active ----------
   var BTN = 'button[style*="uppercase"]';
   var CARDS = [
-    'section[data-screen-label="Para quem é"] div[style*="display:grid"] > div',
-    'section[data-screen-label="O que você vai ver"] div[style*="display:grid"] > div',
-    'section[data-screen-label="Palestrantes"] div[style*="display:grid"] > div'
+    'section[data-screen-label="Para quem é"] div[style*="grid-template"] > div',
+    'section[data-screen-label="O que você vai ver"] div[style*="grid-template"] > div',
+    'section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div'
   ];
   var css =
     '[data-reveal]{transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)!important}' +
@@ -27,12 +27,11 @@
     CARDS.map(function (s) { return s + ':hover'; }).join(',') +
       '{transform:translateY(-6px)!important;border-color:rgba(255,106,0,.5)!important;box-shadow:0 18px 48px rgba(255,106,0,.14)!important}' +
     'section[data-screen-label="Palestrantes"] image-slot{transition:transform .7s cubic-bezier(.22,1,.36,1)}' +
-    'section[data-screen-label="Palestrantes"] div[style*="display:grid"] > div:hover image-slot{transform:scale(1.05)}' +
+    'section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div:hover image-slot{transform:scale(1.05)}' +
     BTN + ':active{transform:scale(.96)!important}' +
     '@keyframes stickyIn{from{transform:translateY(100%)}to{transform:none}}' +
-    'div[style*="position:fixed"][style*="bottom:0"]{animation:stickyIn .5s cubic-bezier(.22,1,.36,1)}' +
+    'div[style*="fixed"][style*="bottom"]{animation:stickyIn .5s cubic-bezier(.22,1,.36,1)}' +
     '.gsap-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);pointer-events:none;z-index:0;transform:scale(0)}' +
-    '.gsap-word{display:inline-block;will-change:transform,opacity}' +
     '#scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,#FF6A00,#FFB27A);' +
       'transform:scaleX(0);transform-origin:0 50%;z-index:60;pointer-events:none}';
   var st = document.createElement('style');
@@ -41,30 +40,6 @@
 
   // ---------- helpers ----------
   function q(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
-
-  function splitWords(el) {
-    var words = [];
-    (function walk(node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
-        if (n.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          n.textContent.split(/(\s+)/).forEach(function (tok) {
-            if (!tok) return;
-            if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(tok)); return; }
-            var s = document.createElement('span');
-            s.className = 'gsap-word';
-            s.textContent = tok;
-            words.push(s);
-            frag.appendChild(s);
-          });
-          node.replaceChild(frag, n);
-        } else if (n.nodeType === 1 && n.tagName !== 'BR') {
-          walk(n);
-        }
-      });
-    })(el);
-    return words;
-  }
 
   function onEnter(targets, from, opts) {
     if (!targets.length) return;
@@ -94,18 +69,16 @@
     var note = col.querySelectorAll('p')[1];
     var cta = col.querySelector('button');
     var photo = hero.querySelector('[data-reveal] img[src*="hero-palestrantes"]');
-    var words = splitWords(h1);
 
     gsap.set([logo, badge, p, date, note, cta].filter(Boolean), { autoAlpha: 0, y: 20 });
-    gsap.set(words, { autoAlpha: 0, y: 26 });
-    gsap.set(h1, { autoAlpha: 1 });
+    gsap.set(h1, { autoAlpha: 0, y: 30, filter: 'blur(8px)' });
     gsap.set(photo, { autoAlpha: 0, x: 60, scale: 0.94 });
     release();
 
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     tl.to(logo, { autoAlpha: 1, y: 0, duration: 0.7 })
       .to(badge, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.45')
-      .to(words, { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.055 }, '-=0.35')
+      .to(h1, { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 1, clearProps: 'transform,opacity,visibility,filter' }, '-=0.35')
       .to(p, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.5')
       .to(date, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.45')
       .to([cta, note].filter(Boolean), { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.1, clearProps: CLEAR }, '-=0.4')
@@ -137,8 +110,7 @@
     }, []), { y: 30 });
 
     if ((s = S('Frase de impacto'))) {
-      var ph = s.querySelector('p');
-      onEnter(splitWords(ph), { y: 18 }, { stagger: 0.045, duration: 0.7 });
+      onEnter([s.querySelector('p')], { y: 22 }, { duration: 0.9 });
     }
 
     if ((s = S('Comunidade'))) onEnter(q('[data-reveal] > *', s), { y: 28 });
@@ -147,7 +119,7 @@
       s = S(label);
       if (!s) return;
       onEnter(q('h2', s), { y: 28 });
-      q('div[style*="display:grid"] > div', s).forEach(function (card) {
+      q('div[style*="grid-template"] > div', s).forEach(function (card) {
         var kids = q(':scope > *', card);
         onEnter(kids, { y: 26 }, { stagger: 0.12 });
         q('svg', card).slice(0, 1).forEach(function (icon) {
@@ -210,23 +182,38 @@
     }).observe(document.body, { childList: true, subtree: true });
   }
 
-  // ---------- boot: espera o runtime renderizar ----------
+  // ---------- boot: espera o runtime renderizar E estabilizar (ele refaz o DOM logo após montar) ----------
   var started = false;
   function ready() {
     return document.querySelector('section[data-screen-label="Hero"] h1') &&
            document.querySelector('section[data-screen-label="Palestrantes"] h3') &&
            document.querySelector('section[data-screen-label="Formulário"] form');
   }
-  function boot() {
-    if (started) return;
-    if (!ready()) { requestAnimationFrame(boot); return; }
-    started = true;
+  var heroStarted = false;
+  function startHero() {
+    if (heroStarted) return;
+    heroStarted = true;
     initHero();
+  }
+  function start() {
+    if (started) return;
+    started = true;
+    window.__animStart = Math.round(performance.now());
+    startHero();
     initSections();
     initMicro();
     window.addEventListener('load', function () { ScrollTrigger.refresh(); });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
   }
-  boot();
+  // O runtime refaz parte do DOM ~1s após montar (import da config): a hero (só opacity/transform, sobrevive)
+  // começa já; as seções (abaixo da dobra) esperam esse momento.
+  var SETTLE_MS = 1300;
+  function poll() {
+    if (started) return;
+    if (ready()) { startHero(); setTimeout(start, Math.max(0, SETTLE_MS - performance.now())); return; }
+    if (performance.now() > 5000) { release(); return; }
+    requestAnimationFrame(poll);
+  }
+  poll();
   setTimeout(release, 6000); // segurança: nunca deixa a hero escondida
 })();
