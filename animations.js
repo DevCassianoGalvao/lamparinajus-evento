@@ -26,7 +26,7 @@
     CARDS.join(',') + '{transition:opacity .8s ease,transform .45s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s!important}' +
     CARDS.map(function (s) { return s + ':hover'; }).join(',') +
       '{transform:translateY(-6px)!important;border-color:rgba(255,106,0,.5)!important;box-shadow:0 18px 48px rgba(255,106,0,.14)!important}' +
-    '    'section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div:hover .speaker-photo{transform:scale(1.05)}' +
+    'section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div:hover .speaker-photo{transform:scale(1.05)}' +
     BTN + ':active{transform:scale(.96)!important}' +
     '@keyframes stickyIn{from{transform:translateY(100%)}to{transform:none}}' +
     'div[style*="fixed"][style*="bottom"]{animation:stickyIn .5s cubic-bezier(.22,1,.36,1)}' +

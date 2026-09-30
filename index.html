@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="./premium.css">
 <script src="./support.js"></script>
 <script src="./nova-button.js" defer></script>
-<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('anim-pending')}</script>
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('anim-pending');setTimeout(function(){document.documentElement.classList.remove('anim-pending')},4000)}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="./animations.js" defer></script>
