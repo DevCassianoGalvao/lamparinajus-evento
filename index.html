@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 <script src="./shader-button.js" defer></script>
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('anim-pending')}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="./animations.js" defer></script>
 <script src="./hero-bg.js" defer></script>
 </head>
 <body>
@@ -16,6 +20,7 @@
   <script src="./image-slot.js"></script>
   <style>
     html::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(at 20% 80%,#fff 1px,transparent 0px);background-size:3px 3px;pointer-events:none;z-index:2;opacity:.04;mix-blend-mode:plus-lighter}
+    html.anim-pending section[data-screen-label="Hero"] :is(img,span,h1,p,button,strong,svg){opacity:0}
     select option{background-color:#141414;color:#fff}
     body { margin: 0; background: #000; -webkit-font-smoothing: antialiased; }
     a { color: #FF9152; }
