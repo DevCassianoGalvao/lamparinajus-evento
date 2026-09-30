@@ -31,7 +31,7 @@
     BTN + ':active{transform:scale(.96)!important}' +
     '@keyframes stickyIn{from{transform:translateY(100%)}to{transform:none}}' +
     'div[style*="fixed"][style*="bottom"]{animation:stickyIn .5s cubic-bezier(.22,1,.36,1)}' +
-    '.gsap-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);pointer-events:none;z-index:0;transform:scale(0)}' +
+    '.gsap-ripple{position:absolute;border-radius:50%;background:rgba(0,0,0,.18);pointer-events:none;transform:scale(0)}' +
     '#scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,#FF6A00,#FFB27A);' +
       'transform:scaleX(0);transform-origin:0 50%;z-index:60;pointer-events:none}';
   var st = document.createElement('style');
@@ -160,8 +160,11 @@
       var dot = document.createElement('span');
       dot.className = 'gsap-ripple';
       dot.style.cssText = 'width:' + size + 'px;height:' + size + 'px;left:' + (e.clientX - r.left - size / 2) + 'px;top:' + (e.clientY - r.top - size / 2) + 'px';
-      btn.appendChild(dot);
-      gsap.to(dot, { scale: 1, autoAlpha: 0, duration: 0.7, ease: 'power2.out', onComplete: function () { dot.remove(); } });
+      var wrap = document.createElement('span');
+      wrap.style.cssText = 'position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:0';
+      wrap.appendChild(dot);
+      btn.appendChild(wrap);
+      gsap.to(dot, { scale: 1, autoAlpha: 0, duration: 0.7, ease: 'power2.out', onComplete: function () { wrap.remove(); } });
     });
 
     // mensagens de erro do formulário: entram com leve shake no campo
