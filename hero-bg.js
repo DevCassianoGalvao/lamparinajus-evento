@@ -5,6 +5,7 @@
 (function () {
   var SECTION_SEL = 'section[data-screen-label="Hero"]';
   var OPACITY = 0.15;
+  var SPEED = 0.3; // 1 = velocidade original do componente
   var RENDER_SCALE = 0.5; // resolução interna relativa ao CSS (o shader é pesado e fica suave mesmo assim)
 
   // Shape "Silken Twist" + paleta "Solar Ember"; fundo preto para combinar com a hero.
@@ -93,7 +94,7 @@
     if (!state) return;
     if (!state.section.isConnected) { state = null; scan(); return; }
     if (!state.cv.isConnected) state.section.insertBefore(state.cv, state.section.firstChild);
-    if (state.visible && document.visibilityState !== 'hidden') draw((now - t0) / 1000);
+    if (state.visible && document.visibilityState !== 'hidden') draw(((now - t0) / 1000) * SPEED);
     if (!reduced) raf = requestAnimationFrame(frame);
   }
 
