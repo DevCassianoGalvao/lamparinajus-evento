@@ -21,6 +21,17 @@
   <style>
     html::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(at 20% 80%,#fff 1px,transparent 0px);background-size:3px 3px;pointer-events:none;z-index:2;opacity:.04;mix-blend-mode:plus-lighter}
     html.anim-pending section[data-screen-label="Hero"] :is(img,span,h1,p,button,strong,svg){opacity:0}
+    @media (max-width:859px){
+      section[data-screen-label="Hero"]{text-align:center}
+      section[data-screen-label="Hero"] > div:nth-of-type(2) > img{margin-left:auto!important;margin-right:auto!important}
+      section[data-screen-label="Hero"] [data-reveal] p{margin-left:auto!important;margin-right:auto!important}
+      section[data-screen-label="Hero"] [data-reveal] > div{align-items:center!important}
+      section[data-screen-label="Hero"] [data-reveal] > div > div{justify-content:center!important}
+      section[data-screen-label="Hero"] [data-reveal] > div > span{margin-left:0!important}
+    }
+    @media (max-width:640px){
+      section[data-screen-label="Para quem é"] div[style*="grid-template"]{grid-template-columns:1fr!important}
+    }
     select option{background-color:#141414;color:#fff}
     body { margin: 0; background: #000; -webkit-font-smoothing: antialiased; }
     a { color: #FF9152; }
