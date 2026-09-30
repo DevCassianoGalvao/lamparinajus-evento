@@ -17,7 +17,9 @@
     'border:2px solid rgba(255,255,255,.24)}' +
     SEL + ' canvas.sb-canvas{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);z-index:-2;' +
     'pointer-events:none;transition:opacity .4s cubic-bezier(.4,0,.6,1)}' +
-    SEL + ':hover canvas.sb-canvas,' + SEL + ':hover::before{opacity:.4}';
+    SEL + ':hover canvas.sb-canvas{opacity:.4}' +
+    SEL + ':hover{box-shadow:0 14px 42px rgba(132,204,22,.55)!important}' +
+    SEL + ':focus-visible{outline:2px solid #a3e635!important;outline-offset:3px}';
   var st = document.createElement('style');
   st.textContent = css;
   document.head.appendChild(st);
