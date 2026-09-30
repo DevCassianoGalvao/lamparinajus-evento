@@ -507,3 +507,12 @@ button[style*="uppercase"][disabled] { opacity: .7; cursor: progress; }
   color: var(--ink-2);
 }
 .meet-line svg { width: 20px; height: 16px; flex: none; }
+
+/* arte da hero: bordas esfumadas (esq./dir./topo/base) para fundir com o preto */
+section[data-screen-label="Hero"] img[src*="hero-palestrantes"] {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 9%, #000 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 9%, #000 78%, transparent 100%);
+  mask-composite: intersect;
+}
+section[data-screen-label="Hero"] div[style*="360px"] { flex: 1.25 1 420px !important; }
