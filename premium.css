@@ -442,9 +442,9 @@ footer span {
    ========================================================================== */
 button[style*="uppercase"] {
   --wa: #25D366;
-  --nova-1: #FF6A00;
-  --nova-2: #FFC58F;
-  --nova-3: #8A3000;
+  --nova-1: #25D366;
+  --nova-2: #7CF2A8;
+  --nova-3: #0F8A43;
   position: relative !important;
   isolation: isolate;
   overflow: visible !important;
@@ -456,7 +456,7 @@ button[style*="uppercase"] {
   letter-spacing: .06em !important;
   text-shadow: none !important;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 106, 0, .16), 0 10px 30px rgba(37, 211, 102, .18) !important;
+  box-shadow: 0 0 10px rgba(37, 211, 102, .2), 0 10px 30px rgba(37, 211, 102, .2) !important;
   transition: transform .22s ease, box-shadow .22s ease !important;
   -webkit-tap-highlight-color: transparent;
 }
@@ -483,16 +483,16 @@ button[style*="uppercase"]::after {
   border-radius: inherit;
   pointer-events: none;
   background:
-    linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .55) 50%, transparent 65%) -130% 0 / 300% 100% no-repeat padding-box,
+    linear-gradient(110deg, transparent 35%, rgba(190, 255, 215, .5) 50%, transparent 65%) -130% 0 / 300% 100% no-repeat padding-box,
     linear-gradient(var(--wa), var(--wa)) padding-box,
     conic-gradient(from var(--nova-rot, 42deg), var(--nova-3) 0deg, var(--nova-1) 70deg, var(--nova-2) 135deg, transparent 190deg, var(--nova-3) 260deg, var(--nova-1) 360deg) border-box;
   transition: background-position .65s cubic-bezier(.2, .8, .2, 1);
 }
 button[style*="uppercase"]:hover {
   transform: translateY(-1px) scale(1.02) !important;
-  box-shadow: 0 0 22px rgba(255, 106, 0, .3), 0 14px 38px rgba(37, 211, 102, .3) !important;
+  box-shadow: 0 0 22px rgba(37, 211, 102, .35), 0 14px 38px rgba(37, 211, 102, .3) !important;
 }
 button[style*="uppercase"]:hover::before { opacity: .9; }
 button[style*="uppercase"]:hover::after { background-position: 130% 0, 0 0, 0 0; }
-button[style*="uppercase"]:focus-visible { outline: 2px solid #fff !important; outline-offset: 4px; }
+button[style*="uppercase"]:focus-visible { outline: 2px solid #25D366 !important; outline-offset: 4px; }
 button[style*="uppercase"][disabled] { opacity: .7; cursor: progress; }
