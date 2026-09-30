@@ -4,15 +4,15 @@
  */
 (function () {
   var SEL = 'button[style*="uppercase"]';
-  var COLORS = [[26, 10, 2], [92, 34, 3], [255, 106, 0], [255, 145, 60]];
+  var COLORS = [[10, 18, 2], [26, 46, 5], [101, 163, 13], [163, 230, 53]];
   var P = { scale: 0.4, seed: 32, speed: 1.6, amp: 0.6, freq: 0.1, iter: 4, bands: 2.4,
             dither: 0.08, exposure: 1.1, contrast: 1.1, saturation: 1 };
 
   var css = SEL + '{position:relative!important;isolation:isolate;overflow:hidden!important;border:none!important;' +
-    'border-radius:999px!important;background:#1a0a02!important;box-shadow:0 10px 30px rgba(255,106,0,.3)!important;' +
+    'border-radius:999px!important;background:#0a1202!important;box-shadow:0 10px 30px rgba(132,204,22,.35)!important;' +
     'font-weight:600!important;text-shadow:0 1px 6px rgba(0,0,0,.55);letter-spacing:.06em!important}' +
     SEL + '::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;' +
-    'box-shadow:inset 0 0 16px rgba(255,200,150,.64);mix-blend-mode:hard-light;transition:opacity .4s cubic-bezier(.4,0,.6,1)}' +
+    'box-shadow:inset 0 0 16px rgba(217,249,157,.64);mix-blend-mode:hard-light;transition:opacity .4s cubic-bezier(.4,0,.6,1)}' +
     SEL + '::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;' +
     'border:2px solid rgba(255,255,255,.24)}' +
     SEL + ' canvas.sb-canvas{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);z-index:-2;' +
