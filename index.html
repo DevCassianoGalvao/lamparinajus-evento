@@ -19,7 +19,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=DM+Sans:wght@400;500;600&amp;family=Host+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
   <script src="./image-slot.js"></script>
   <style>
-    html::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(at 20% 80%,#fff 1px,transparent 0px);background-size:3px 3px;pointer-events:none;z-index:2;opacity:.04;mix-blend-mode:plus-lighter}
     html.anim-pending section[data-screen-label="Hero"] :is(img,span,h1,p,button,strong,svg){opacity:0}
     select option{background-color:#141414;color:#fff}
     body { margin: 0; background: #000; -webkit-font-smoothing: antialiased; }
@@ -158,7 +157,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
       <sc-for list="{{ speakers }}" as="speaker" hint-placeholder-count="3">
         <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;{{ speaker.revealStyle }}" style-hover="border-color:rgba(255,106,0,.4)" data-reveal="1">
-          <image-slot id="{{ speaker.slotId }}" shape="rect" src="{{ speaker.photo }}" fit="cover" placeholder="{{ speaker.placeholderText }}" style="width:100%;height:280px;display:block"></image-slot>
+          <img class="speaker-photo" src="{{ speaker.photo }}" alt="{{ speaker.name }}" loading="lazy" style="display:block;width:100%;height:360px;object-fit:cover;object-position:{{ speaker.photoPos }}">
           <div style="padding:24px">
             <h3 style="margin:0;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:19px;color:#fff">{{ speaker.name }}</h3>
             <div style="margin-top:4px;font-family:'Host Grotesk',sans-serif;font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#FF9152">{{ speaker.tag }}</div>
@@ -491,9 +490,9 @@ class Component extends DCLogic {
         { number: "03", title: "Gestão", speaker: "com Dr. Odilon Caetano Jr.", desc: "Como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", isManagement: true },
       ].map((card, i) => ({ ...card, revealStyle: this.revealStyle(10 + i, i * 90) })),
       speakers: [
-        { slotId: "speaker-simao", name: "Dr. Simão Rebelo", tag: "Advogado previdenciarista", bio: "Advogado previdenciarista com 6 anos de experiência e atuação digital escalável, atendendo clientes em todo o Brasil pela prospecção estratégica via tráfego pago. No evento, mostra como usou o tráfego pago para ganhar espaço, virar referência na sua área e ter leads e clientes novos todos os dias.", placeholderText: "Foto: Dr. Simão Rebelo", photo: "./assets/speaker-simao.jpeg" },
-        { slotId: "speaker-jhon", name: "Jhon Gomes", tag: "Especialista em vendas e marketing jurídico", bio: "Construiu a carreira na advocacia a partir do marketing jurídico e hoje não atua mais, dedicando-se a ensinar e aplicar isso com outros advogados. No evento, fala sobre vendas: como cada canal de aquisição se comporta, como abordar cada um e como a IA pode ajudar.", placeholderText: "Foto: Jhon Gomes", photo: "./assets/speaker-jhon.png" },
-        { slotId: "speaker-odilon", name: "Dr. Odilon Caetano Jr.", tag: "Sócio da CN Advogados Associados", bio: "Sócio do escritório CN Advogados Associados, especialista em direito empresarial e à frente de um dos maiores escritórios da região. No evento, fala sobre como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", placeholderText: "Foto: Dr. Odilon Caetano Jr.", photo: "./assets/speaker-odilon.jpeg" },
+        { slotId: "speaker-simao", name: "Dr. Simão Rebelo", tag: "Advogado previdenciarista", bio: "Advogado previdenciarista com 6 anos de experiência e atuação digital escalável, atendendo clientes em todo o Brasil pela prospecção estratégica via tráfego pago. No evento, mostra como usou o tráfego pago para ganhar espaço, virar referência na sua área e ter leads e clientes novos todos os dias.", placeholderText: "Foto: Dr. Simão Rebelo", photo: "./assets/speaker-simao.webp", photoPos: "50% 14%" },
+        { slotId: "speaker-jhon", name: "Jhon Gomes", tag: "Especialista em vendas e marketing jurídico", bio: "Construiu a carreira na advocacia a partir do marketing jurídico e hoje não atua mais, dedicando-se a ensinar e aplicar isso com outros advogados. No evento, fala sobre vendas: como cada canal de aquisição se comporta, como abordar cada um e como a IA pode ajudar.", placeholderText: "Foto: Jhon Gomes", photo: "./assets/speaker-jhon.webp", photoPos: "50% 30%" },
+        { slotId: "speaker-odilon", name: "Dr. Odilon Caetano Jr.", tag: "Sócio da CN Advogados Associados", bio: "Sócio do escritório CN Advogados Associados, especialista em direito empresarial e à frente de um dos maiores escritórios da região. No evento, fala sobre como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", placeholderText: "Foto: Dr. Odilon Caetano Jr.", photo: "./assets/speaker-odilon.webp", photoPos: "50% 24%" },
       ].map((sp, i) => ({ ...sp, revealStyle: this.revealStyle(14 + i, i * 90, "border-color .25s") })),
     };
   }

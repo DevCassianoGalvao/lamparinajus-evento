@@ -294,12 +294,10 @@ section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div {
   border: 1px solid var(--line) !important;
   border-radius: 2px !important;
 }
-section[data-screen-label="Palestrantes"] image-slot {
-  height: 360px !important;
-  filter: grayscale(.45) contrast(1.04);
-  transition: filter .6s ease, transform .7s cubic-bezier(.22, 1, .36, 1);
+section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div { overflow: hidden; }
+section[data-screen-label="Palestrantes"] .speaker-photo {
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1);
 }
-section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div:hover image-slot { filter: none; }
 section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div > div { padding: 28px 28px 32px !important; }
 section[data-screen-label="Palestrantes"] div[style*="grid-template"] > div > div > div {
   margin-top: 10px !important;
@@ -433,7 +431,7 @@ footer span {
   section[data-screen-label="Para quem é"] div[style*="grid-template"] > div:nth-child(even) {
     padding-left: 0 !important; border-left: 0 !important;
   }
-  section[data-screen-label="Palestrantes"] image-slot { height: 320px !important; }
+  section[data-screen-label="Palestrantes"] .speaker-photo { height: 340px !important; }
 }
 
 /* ==========================================================================
