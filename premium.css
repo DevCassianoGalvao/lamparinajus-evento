@@ -183,6 +183,16 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   font: 600 11px/1.4 var(--grot); letter-spacing: .14em; text-transform: uppercase; color: var(--o2);
 }
 
+.sp-bar { display: block; height: 2px; margin-top: 14px; background: rgba(255, 255, 255, .12); overflow: hidden; border-radius: 2px; }
+.sp-bar::after { content: ""; display: block; height: 100%; width: 0; background: var(--o); }
+@keyframes spBar { from { width: 0; } to { width: 100%; } }
+.hero-art[data-active="0"] .sp-panel:nth-child(1) .sp-bar::after,
+.hero-art[data-active="1"] .sp-panel:nth-child(2) .sp-bar::after,
+.hero-art[data-active="2"] .sp-panel:nth-child(3) .sp-bar::after {
+  animation: spBar var(--sp-interval, 7s) linear forwards;
+}
+.hero-art[data-paused] .sp-bar::after { animation-play-state: paused !important; }
+
 /* ativo: mesmo estilo quando o JS ainda não marcou ninguém (1º painel) */
 .hero-art:not([data-active]) .sp-panel:nth-child(1),
 .hero-art[data-active="0"] .sp-panel:nth-child(1),
