@@ -425,23 +425,38 @@ footer span {
 /* ---------- MOBILE ---------- */
 @media (max-width: 859px) {
   section[data-screen-label="Hero"] { text-align: center; }
-  .hero-head { justify-content: center; }
+  section[data-screen-label="Hero"] [data-reveal] > img:first-child { margin-left: auto !important; margin-right: auto !important; }
   section[data-screen-label="Hero"] [data-reveal] p { margin-left: auto !important; margin-right: auto !important; }
   section[data-screen-label="Hero"] [data-reveal] > span:first-child::before { display: none; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-art { display: none; }
-  .event-box { grid-template-columns: 1fr; justify-content: stretch; text-align: left; }
+  .event-box {
+    grid-template-columns: 1fr;
+    width: fit-content; max-width: 100%;
+    margin-left: auto !important; margin-right: auto !important;
+    justify-content: center;
+  }
+  .event-item { justify-content: center; padding: 12px 18px; gap: 10px; text-align: left; }
+  .event-item svg { width: 22px; height: 22px; }
+  .event-item strong { font-size: .88rem; }
+  .event-item small { font-size: 12px; }
   .event-item + .event-item { border-left: 0; border-top: 1px solid rgba(255, 106, 0, .35); }
+
+  /* tudo centralizado: avisos, títulos de seção, selo OAB */
+  section[data-screen-label="Avisos"] > div > div:first-child { text-align: center !important; }
+  section[data-screen-label="Avisos"] > div > div:last-child > div { text-align: center; }
+  h2[data-eyebrow] { text-align: center !important; }
+  h2[data-eyebrow]::after { margin-left: auto; margin-right: auto; }
+  section[data-screen-label="Segurança OAB"] > div { flex-direction: column; text-align: center !important; }
+  section[data-screen-label="Segurança OAB"] p { margin-left: auto !important; margin-right: auto !important; text-align: center; }
 }
 @media (max-width: 720px) {
-  .hero-head span { display: none; }
   section[data-screen-label="Avisos"] > div > div:last-child > div + div {
     border-left: 0 !important;
     border-top: 1px solid var(--line) !important;
     padding-left: 0 !important;
   }
   section[data-screen-label="Avisos"] > div > div:last-child > div { padding-right: 0 !important; }
-  h2[data-eyebrow] { text-align: left; }
 }
 @media (max-width: 640px) {
   section[data-screen-label="Para quem é"] div[style*="grid-template"] { grid-template-columns: 1fr !important; }
