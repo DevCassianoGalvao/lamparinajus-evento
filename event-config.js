@@ -3,8 +3,10 @@
  * Edite só este bloco para plugar o evento em produção.
  */
 export const CONFIG = {
-  // Função da Vercel que envia o e-mail (Brevo) e grava na planilha. Chaves em variáveis de ambiente (.env.example).
-  API_URL: "/api/inscricao",
+  // Endpoint que envia o e-mail (Brevo) e grava na planilha. Chaves no .env (modelo em .env.example).
+  // cPanel: api/inscricao.php · Vercel: api/inscricao.js (usado como reserva se o PHP não existir).
+  API_URL: "./api/inscricao.php",
+  API_URL_FALLBACK: "/api/inscricao",
 
   // Link do grupo de WhatsApp já existente do Advocacia de Sucesso.
   GROUP_URL: "https://chat.whatsapp.com/JaOauBnZtcNJCrZVyGDAaw?s=cl&p=i&mlu=0&ilr=4",
@@ -59,13 +61,18 @@ export function getStoredUTMs() {
   }
 }
 
-// Envia a inscrição para a função /api/inscricao (Brevo + planilha).
+// Envia a inscrição para o backend (Brevo + planilha).
 export async function submitInscricao(payload) {
-  const res = await fetch(CONFIG.API_URL, {
+  const opts = {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify(payload),
-  });
+  };
+  let res = await fetch(CONFIG.API_URL, opts);
+  // Hospedagem sem PHP (ex.: Vercel): o .php não existe, então usa a função Node.
+  if ((res.status === 404 || res.status === 405) && CONFIG.API_URL_FALLBACK) {
+    res = await fetch(CONFIG.API_URL_FALLBACK, opts);
+  }
   if (!res.ok) throw new Error("Não foi possível enviar sua inscrição. Tente novamente.");
   return true;
 }

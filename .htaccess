@@ -1,0 +1,5 @@
+# Bloqueia acesso público a arquivos ocultos (.env, .git etc.)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.git
