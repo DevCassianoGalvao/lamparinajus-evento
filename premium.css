@@ -12,7 +12,6 @@
   --ink: #fff;
   --ink-2: #c4c4c4;
   --ink-3: #8f8f8f;
-  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
   --sans: 'DM Sans', sans-serif;
   --grot: 'Host Grotesk', sans-serif;
   --wrap: 1120px;
@@ -20,7 +19,7 @@
 
 /* ---------- tipografia base ---------- */
 section h1, section h2, section h3 {
-  font-family: var(--serif) !important;
+  font-family: var(--grot) !important;
   font-weight: 600 !important;
   letter-spacing: -.012em !important;
   font-variant-numeric: lining-nums;
@@ -53,7 +52,7 @@ h2[data-eyebrow]::after {
 
 /* ---------- HERO ---------- */
 section[data-screen-label="Hero"] {
-  padding: 0 0 clamp(72px, 9vw, 128px) !important;
+  padding: clamp(56px, 8vw, 112px) 0 clamp(72px, 9vw, 128px) !important;
 }
 .hero-head {
   display: flex;
@@ -70,6 +69,9 @@ section[data-screen-label="Hero"] {
   letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--ink-3);
+}
+section[data-screen-label="Hero"] [data-reveal] > img:first-child {
+  height: 56px !important; width: auto !important; margin-bottom: clamp(36px, 5vw, 56px) !important;
 }
 section[data-screen-label="Hero"] h1 {
   font-size: clamp(2rem, 2.2vw + 1rem, 3.1rem) !important;
@@ -167,17 +169,17 @@ section[data-screen-label="Frase de impacto"] {
   border-color: var(--line) !important;
 }
 section[data-screen-label="Frase de impacto"] p {
-  font-family: var(--serif) !important;
+  font-family: var(--grot) !important;
   font-weight: 500 !important;
   font-size: clamp(1.6rem, 1.9vw + 1rem, 2.6rem) !important;
   line-height: 1.18 !important;
   letter-spacing: -.012em !important;
 }
-section[data-screen-label="Frase de impacto"] p span { font-style: italic; }
+section[data-screen-label="Frase de impacto"] p span { font-style: normal; }
 section[data-screen-label="Frase de impacto"] [data-reveal]::before {
   content: "“";
   display: block;
-  font: 600 4.5rem/0.6 var(--serif);
+  font: 600 4.5rem/0.6 var(--grot);
   color: var(--o);
   margin-bottom: 18px;
 }
@@ -226,7 +228,7 @@ section[data-screen-label="Para quem é"] div[style*="grid-template"] > div > di
   border: 1px solid var(--line-o) !important;
 }
 section[data-screen-label="Para quem é"] div[style*="grid-template"] p {
-  font-family: var(--serif) !important;
+  font-family: var(--grot) !important;
   font-weight: 500 !important;
   font-size: clamp(1.25rem, .8vw + 1rem, 1.55rem) !important;
   line-height: 1.3 !important;
@@ -260,7 +262,7 @@ section[data-screen-label="O que você vai ver"] div[style*="grid-template"] > d
   width: 44px !important; height: 44px !important;
 }
 section[data-screen-label="O que você vai ver"] div[style*="grid-template"] > div > div:first-child > span {
-  font-family: var(--serif) !important;
+  font-family: var(--grot) !important;
   font-weight: 500 !important;
   font-size: 3.2rem !important;
   line-height: .9 !important;
@@ -361,7 +363,7 @@ section[data-screen-label="Segurança OAB"] {
   border-color: var(--line) !important;
 }
 section[data-screen-label="Segurança OAB"] p {
-  font-family: var(--serif) !important;
+  font-family: var(--grot) !important;
   font-style: italic;
   font-size: 1.25rem !important;
   line-height: 1.4 !important;
