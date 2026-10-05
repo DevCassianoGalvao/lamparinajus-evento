@@ -461,13 +461,12 @@ class Component extends DCLogic {
       errorMessage: this.state.errorMessage,
       buttonLabel,
       heroTextRevealStyle: this.revealStyle(0, 0),
-      heroImageRevealStyle: this.revealStyle(1, 90),
-      impactRevealStyle: this.revealStyle(2, 0),
-      communityRevealStyle: this.revealStyle(3, 0),
-      paraQuemHeadingRevealStyle: this.revealStyle(4, 0),
-      oQueVerHeadingRevealStyle: this.revealStyle(9, 0),
-      palestrantesHeadingRevealStyle: this.revealStyle(13, 0),
-      ctaFinalRevealStyle: this.revealStyle(17, 0),
+      impactRevealStyle: this.revealStyle(1, 0),
+      communityRevealStyle: this.revealStyle(2, 0),
+      paraQuemHeadingRevealStyle: this.revealStyle(3, 0),
+      oQueVerHeadingRevealStyle: this.revealStyle(8, 0),
+      palestrantesHeadingRevealStyle: this.revealStyle(12, 0),
+      ctaFinalRevealStyle: this.revealStyle(16, 0),
       areaOptions: ["Previdenciário", "Trabalhista", "Tributário", "Bancário / Consumidor", "Família", "Saúde", "Empresarial", "Penal", "Outros"],
       tamanhoOptions: ["Apenas eu", "2 a 5 pessoas", "6 a 10 pessoas", "Mais de 10"],
       checklistItems: [
@@ -475,17 +474,17 @@ class Component extends DCLogic {
         "Já pensou em anunciar, mas ficou com receio de errar com a OAB.",
         "Já anunciou e não teve o retorno que esperava.",
         "Recebe contatos de clientes e perde parte deles antes de a conversa virar contrato.",
-      ].map((text, i) => ({ text, revealStyle: this.revealStyle(5 + i, i * 90, "border-color .25s, box-shadow .25s") })),
+      ].map((text, i) => ({ text, revealStyle: this.revealStyle(4 + i, i * 90, "border-color .25s, box-shadow .25s") })),
       overviewCards: [
         { number: "01", title: "Aquisição", speaker: "com Dr. Simão Rebelo.", desc: "Como ele usou tráfego pago para ganhar espaço, virar referência na sua área e ter leads e clientes novos todos os dias.", isAcquisition: true },
         { number: "02", title: "Vendas", speaker: "com Jhon Gomes.", desc: "Como cada canal de aquisição se comporta, como abordar cada um deles e como a IA pode ajudar a vender mais.", isSales: true },
         { number: "03", title: "Gestão", speaker: "com Dr. Odilon Caetano Jr.", desc: "Como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", isManagement: true },
-      ].map((card, i) => ({ ...card, revealStyle: this.revealStyle(10 + i, i * 90) })),
+      ].map((card, i) => ({ ...card, revealStyle: this.revealStyle(9 + i, i * 90) })),
       speakers: [
         { slotId: "speaker-simao", name: "Dr. Simão Rebelo", tag: "Advogado previdenciarista", bio: "Advogado previdenciarista com 6 anos de experiência e atuação digital escalável, atendendo clientes em todo o Brasil pela prospecção estratégica via tráfego pago. No evento, mostra como usou o tráfego pago para ganhar espaço, virar referência na sua área e ter leads e clientes novos todos os dias.", placeholderText: "Foto: Dr. Simão Rebelo", photo: "./assets/speaker-simao.webp", photoPos: "50% 14%" },
         { slotId: "speaker-jhon", name: "Jhon Gomes", tag: "Especialista em vendas e marketing jurídico", bio: "Construiu a carreira na advocacia a partir do marketing jurídico e hoje não atua mais, dedicando-se a ensinar e aplicar isso com outros advogados. No evento, fala sobre vendas: como cada canal de aquisição se comporta, como abordar cada um e como a IA pode ajudar.", placeholderText: "Foto: Jhon Gomes", photo: "./assets/speaker-jhon.webp", photoPos: "50% 30%" },
         { slotId: "speaker-odilon", name: "Dr. Odilon Caetano Jr.", tag: "Sócio da CN Advogados Associados", bio: "Sócio do escritório CN Advogados Associados, especialista em direito empresarial e à frente de um dos maiores escritórios da região. No evento, fala sobre como gerir um escritório de sucesso: ferramentas, processos e rotina de gestão.", placeholderText: "Foto: Dr. Odilon Caetano Jr.", photo: "./assets/speaker-odilon.webp", photoPos: "50% 24%" },
-      ].map((sp, i) => ({ ...sp, revealStyle: this.revealStyle(14 + i, i * 90, "border-color .25s") })),
+      ].map((sp, i) => ({ ...sp, revealStyle: this.revealStyle(13 + i, i * 90, "border-color .25s") })),
     };
   }
 }
