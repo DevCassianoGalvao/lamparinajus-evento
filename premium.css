@@ -50,6 +50,48 @@ h2[data-eyebrow]::after {
   background: var(--o);
 }
 
+/* ---------- FUNDO EM GRID (seções pretas, exceto selo OAB) ---------- */
+section[data-screen-label="Hero"],
+section[data-screen-label="Avisos"],
+section[data-screen-label="Comunidade"],
+section[data-screen-label="O que você vai ver"],
+section[data-screen-label="Formulário"] {
+  position: relative;
+  isolation: isolate;
+}
+section[data-screen-label="Hero"]::before,
+section[data-screen-label="Avisos"]::before,
+section[data-screen-label="Comunidade"]::before,
+section[data-screen-label="O que você vai ver"]::before,
+section[data-screen-label="Formulário"]::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  /* some nas bordas: sem corte seco entre seções */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 72%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 72%, transparent);
+}
+/* hero: grid desde o topo, degradê só embaixo */
+section[data-screen-label="Hero"]::before {
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+          mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+/* hero: dois focos de luz laranja suaves (sup. direito e inf. esquerdo) */
+section[data-screen-label="Hero"]::after {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, transparent 62%, #000),   /* degradê preto na base: sem corte seco */
+    radial-gradient(ellipse 46% 52% at 100% 0%, rgba(255, 106, 0, .16), transparent 70%),
+    radial-gradient(ellipse 40% 42% at 0% 80%, rgba(255, 106, 0, .11), transparent 70%);
+}
+
 /* ---------- HERO ---------- */
 section[data-screen-label="Hero"] {
   padding: clamp(56px, 8vw, 112px) 0 clamp(72px, 9vw, 128px) !important;
@@ -513,6 +555,8 @@ footer span {
   text-transform: uppercase;
   color: var(--ink-3) !important;
 }
+
+footer > div > span { font-size: 8.5px !important; letter-spacing: .14em !important; opacity: .7; }
 
 /* ---------- MOBILE ---------- */
 @media (max-width: 859px) {
