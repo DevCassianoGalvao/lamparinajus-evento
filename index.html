@@ -10,7 +10,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="./animations.js" defer></script>
-<script src="./hero-ascii-bg.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -47,12 +46,9 @@
 
 <section data-screen-label="Hero" style="position:relative;overflow:hidden;background:#000;padding:clamp(72px,10vw,120px) 0 clamp(56px,8vw,96px)">
   <div style="max-width:1200px;margin:0 auto;padding-inline:clamp(20px,5vw,64px);position:relative;z-index:1">
-    <div class="hero-head">
-      <img src="./assets/lamparina-jus-logo.png" alt="Lamparina Jus" style="height: 65px; width: 136px; display: block; margin-bottom: 32px">
-      <span>Inscrições abertas</span>
-    </div>
     <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:center">
       <div style="flex:1 1 420px;min-width:300px;{{ heroTextRevealStyle }}" data-reveal="1">
+        <img src="./assets/lamparina-jus-logo.png" alt="Lamparina Jus" style="height:65px;width:136px;display:block;margin-bottom:32px">
         <span style="display:inline-flex;align-items:center;padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,#3a1c0a,#FF6A00);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase">Advocacia de Sucesso · 3ª Edição</span>
         <h1 style="margin: 24px 0 0; font-family: 'Host Grotesk',sans-serif; font-weight: 800; color: #fff; font-size: 42px; line-height: 1.15; letter-spacing: -0.01em">Tráfego, vendas e gestão: <br>o que seu escritório precisa para <span style="color: rgb(255, 106, 0);">crescer todos os meses</span></h1>
         <p style="margin-top:20px;font-family:'DM Sans',sans-serif;font-weight:400;color:#c9c9c9;font-size:clamp(1rem,1vw + 0.85rem,1.15rem);line-height:1.6;max-width:52ch">Dr. Simão Rebelo, Jhon Gomes e Dr. Odilon Caetano Jr. juntos em um só evento, mostrando como atrair clientes pelo digital, vender mais e gerir o escritório com processo.</p>
@@ -66,11 +62,6 @@
         </div>
         <button type="button" onclick="{{ scrollToForm }}" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;padding:18px 36px;min-height:56px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Quero participar</button>
         <p style="margin-top:16px;font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:13px;max-width:46ch;line-height:1.6">Ao se inscrever, você entra no grupo de WhatsApp do Advocacia de Sucesso e recebe lá os avisos e o acesso.</p>
-      </div>
-      <div style="flex:1 1 360px;min-width:280px;display:flex;justify-content:center;align-items:center">
-        <div style="position:relative;width:100%;max-width:640px;{{ heroImageRevealStyle }}" data-reveal="1">
-          <img src="./assets/hero-palestrantes-arte.webp" alt="Dr. Simão Rebelo, Jhon Gomes e Dr. Odilon Caetano Jr." width="1536" height="1024" style="display:block;width:100%;height:auto">
-        </div>
       </div>
     </div>
   </div>

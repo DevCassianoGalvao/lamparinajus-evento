@@ -59,8 +59,8 @@
   // ---------- hero ----------
   function initHero() {
     var hero = document.querySelector('section[data-screen-label="Hero"]');
-    var logo = hero.querySelector('.hero-head');
     var col = hero.querySelector('[data-reveal]');
+    var logo = col.querySelector('img');
     var badge = col.querySelector('span');
     var h1 = col.querySelector('h1');
     var p = col.querySelector('p');
@@ -71,7 +71,7 @@
 
     gsap.set([logo, badge, p, date, note, cta].filter(Boolean), { autoAlpha: 0, y: 20 });
     gsap.set(h1, { autoAlpha: 0, y: 30, filter: 'blur(8px)' });
-    gsap.set(photo, { autoAlpha: 0, x: 60, scale: 0.94 });
+    if (photo) gsap.set(photo, { autoAlpha: 0, x: 60, scale: 0.94 });
     release();
 
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -81,7 +81,6 @@
       .to(p, { autoAlpha: 1, y: 0, duration: 0.7 }, '-=0.5')
       .to(date, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.45')
       .to([cta, note].filter(Boolean), { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.1, clearProps: CLEAR }, '-=0.4')
-      .to(photo, { autoAlpha: 1, x: 0, scale: 1, duration: 1.2, ease: 'power4.out', clearProps: CLEAR }, 0.3)
       .add(function () {
         gsap.set([logo, badge, p, date], { clearProps: CLEAR });
       });
