@@ -1,15 +1,19 @@
 /**
- * Fundo da hero: grade 3D em perspectiva ("Digital Horizon"), laranja, muito lenta e a ~10% de opacidade.
+ * Fundo da hero: terreno 3D de pontos com colinas ("Digital Horizon"), laranja, muito lento e a ~10% de opacidade.
  * Canvas 2D; um degradê preto→transparente cobre a base da hero para não haver corte seco.
  */
 (function () {
   var SECTION_SEL = 'section[data-screen-label="Hero"]';
   var RGB = '255,106,0';
-  var MAX_ALPHA = 0.10;      // opacidade máxima das linhas
-  var HORIZON = 0.40;        // altura do horizonte (fração da hero)
-  var ROWS = 16;             // linhas horizontais visíveis
-  var COLS = 28;             // linhas verticais (de cada lado do centro: COLS/2)
-  var CYCLE_SECONDS = 14;    // tempo para a grade avançar uma linha (bem lento)
+  var MAX_ALPHA = 0.10;      // opacidade máxima dos pontos
+  var HORIZON = 0.36;        // altura do horizonte (fração da hero)
+  var CAM_Y = 2.4;           // altura da câmera
+  var Z_NEAR = 1.6, Z_FAR = 46, DZ = 0.36;   // profundidade e espaçamento das fileiras
+  var X_HALF = 66, DX = 1.5; // largura do terreno e espaçamento das colunas
+  var SPEED = 0.18;          // unidades/segundo (bem lento)
+  var DRIFT = 0.05;          // velocidade de ondulação das colinas
+  var GLYPH_Z = 11;          // abaixo dessa profundidade, os pontos viram caracteres
+  var GLYPHS = ['0', '1', 'I', 'o', '+'];
   var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var state = null;
@@ -38,42 +42,51 @@
     draw(s, performance.now());
   }
 
+  function height(x, zw, t) {
+    var amp = 0.5 + zw * 0.11;
+    return amp * (Math.sin(x * 0.21 + zw * 0.12 + t * DRIFT) +
+                  0.7 * Math.sin(x * 0.11 - zw * 0.16 - t * DRIFT * 0.8) +
+                  0.4 * Math.sin(x * 0.31 + zw * 0.23));
+  }
+
   function draw(s, now) {
     var ctx = s.ctx, w = s.w, h = s.h;
     ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
 
-    var hy = h * HORIZON, cx = w / 2, floor = h - hy;
-    var phase = reduced ? 0 : ((now - s.t0) / 1000 / CYCLE_SECONDS) % 1;
-    ctx.lineWidth = 1;
+    var t = reduced ? 0 : (now - s.t0) / 1000;
+    var travel = t * SPEED;
+    var hy = h * HORIZON, cx = w / 2, f = w * 0.6;
+    var rows = Math.ceil((Z_FAR - Z_NEAR) / DZ);
+    var shift = travel % DZ;                     // fileiras deslizam rumo à câmera
+    var base = Math.floor(travel / DZ);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
 
-    // linhas horizontais: espaçamento cresce com a proximidade (perspectiva)
-    for (var k = 0; k <= ROWS; k++) {
-      var p = (k + phase) / ROWS;           // 0 = horizonte, 1 = base
-      var y = hy + floor * Math.pow(p, 2.2);
-      var a = MAX_ALPHA * Math.min(1, p * 2.2);
-      ctx.strokeStyle = 'rgba(' + RGB + ',' + a.toFixed(3) + ')';
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    for (var k = rows; k >= 0; k--) {            // do fundo para a frente
+      var z = Z_NEAR + k * DZ - shift;
+      if (z < Z_NEAR * 0.7) continue;
+      var zw = z + (base + 0) * DZ + shift;       // z no mundo (fixo para cada fileira)
+      var scale = f / z;
+      var fog = Math.max(0, 1 - z / Z_FAR);
+      var alpha = MAX_ALPHA * (0.25 + 0.75 * Math.min(1, Math.pow(fog, 0.8) * 1.6));
+      var size = Math.max(0.7, 2.6 / Math.sqrt(z));
+      var glyph = z < GLYPH_Z;
+      ctx.fillStyle = 'rgba(' + RGB + ',' + alpha.toFixed(3) + ')';
+      if (glyph) ctx.font = '600 ' + Math.round(Math.max(8, 70 / z)) + 'px monospace';
+      var colOff = (Math.floor(zw / DZ) % 2) * DX * 0.5;   // fileiras alternadas
+      for (var x = -X_HALF + colOff; x <= X_HALF; x += DX) {
+        var sy = hy + (CAM_Y - height(x, zw, t)) * scale;
+        if (sy < 0 || sy > h) continue;
+        var sx = cx + x * scale;
+        if (sx < -20 || sx > w + 20) continue;
+        if (glyph && ((x * 7 + zw * 13) | 0) % 5 === 0) {
+          ctx.fillText(GLYPHS[Math.abs((x * 3 + zw * 5) | 0) % GLYPHS.length], sx, sy);
+        } else {
+          ctx.fillRect(sx - size / 2, sy - size / 2, size, size);
+        }
+      }
     }
-
-    // linhas verticais convergindo ao ponto de fuga, esmaecendo rumo ao horizonte
-    var g = ctx.createLinearGradient(0, hy, 0, h);
-    g.addColorStop(0, 'rgba(' + RGB + ',0)');
-    g.addColorStop(1, 'rgba(' + RGB + ',' + MAX_ALPHA + ')');
-    ctx.strokeStyle = g;
-    var spread = w * 1.6 / COLS;            // espaçamento na base
-    var half = COLS / 2;
-    for (var i = -half; i <= half; i++) {
-      ctx.beginPath(); ctx.moveTo(cx, hy); ctx.lineTo(cx + i * spread, h); ctx.stroke();
-    }
-
-    // brilho suave no horizonte
-    var glow = ctx.createLinearGradient(0, hy - 60, 0, hy + 60);
-    glow.addColorStop(0, 'rgba(' + RGB + ',0)');
-    glow.addColorStop(0.5, 'rgba(' + RGB + ',' + (MAX_ALPHA * 0.6).toFixed(3) + ')');
-    glow.addColorStop(1, 'rgba(' + RGB + ',0)');
-    ctx.fillStyle = glow;
-    ctx.fillRect(0, hy - 60, w, 120);
   }
 
   function loop(s) {
