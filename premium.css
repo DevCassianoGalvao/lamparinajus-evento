@@ -436,8 +436,8 @@ footer span {
     margin-left: auto !important; margin-right: auto !important;
     justify-content: center;
   }
-  .event-item { justify-content: center; padding: 12px 18px; gap: 10px; text-align: left; }
-  .event-item svg { width: 22px; height: 22px; }
+  .event-item { justify-content: flex-start; padding: 12px 18px; gap: 12px; text-align: left; }
+  .event-item svg { width: 24px; height: 24px; }
   .event-item strong { font-size: .88rem; }
   .event-item small { font-size: 12px; }
   .event-item + .event-item { border-left: 0; border-top: 1px solid rgba(255, 106, 0, .35); }
