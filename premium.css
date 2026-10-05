@@ -155,8 +155,7 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   background: #0d0d0d;
   clip-path: inset(0 round 18px);   /* garante o corte arredondado da foto com transform */
   isolation: isolate;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
-  transition: flex-grow 1.1s cubic-bezier(.65, 0, .35, 1), box-shadow .6s;
+  transition: flex-grow 1.1s cubic-bezier(.65, 0, .35, 1);
   cursor: pointer;
 }
 .sp-panel img {
@@ -190,7 +189,6 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
 .hero-art[data-active="1"] .sp-panel:nth-child(2),
 .hero-art[data-active="2"] .sp-panel:nth-child(3) {
   flex-grow: 3.4;
-  box-shadow: inset 0 0 0 1px rgba(255, 106, 0, .45);
 }
 .hero-art:not([data-active]) .sp-panel:nth-child(1) img,
 .hero-art[data-active="0"] .sp-panel:nth-child(1) img,
@@ -206,6 +204,19 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   opacity: 1;
   transform: none;
   transition: opacity .6s ease .7s, transform .6s cubic-bezier(.22, 1, .36, 1) .7s;
+}
+/* traçado laranja em volta do painel ativo (por cima da foto) */
+.sp-panel::after {
+  content: ""; position: absolute; inset: 0; z-index: 2;
+  border: 2px solid var(--o); border-radius: 18px;
+  opacity: 0; transition: opacity .5s ease;
+  pointer-events: none;
+}
+.hero-art:not([data-active]) .sp-panel:nth-child(1)::after,
+.hero-art[data-active="0"] .sp-panel:nth-child(1)::after,
+.hero-art[data-active="1"] .sp-panel:nth-child(2)::after,
+.hero-art[data-active="2"] .sp-panel:nth-child(3)::after {
+  opacity: 1; transition: opacity .6s ease .5s;
 }
 @media (prefers-reduced-motion: reduce) {
   .sp-panel, .sp-panel img, .sp-cap { transition: none !important; }
