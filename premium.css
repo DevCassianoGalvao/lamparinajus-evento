@@ -207,6 +207,8 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   transform: none;
   transition: opacity .6s ease .7s, transform .6s cubic-bezier(.22, 1, .36, 1) .7s;
 }
+@media (prefers-reduced-motion: reduce) {
+  .sp-panel, .sp-panel img, .sp-cap { transition: none !important; }
 }
 
 /* ---------- AVISOS ---------- */
