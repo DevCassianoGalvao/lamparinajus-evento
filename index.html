@@ -10,6 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="./animations.js" defer></script>
+<script src="./hero-speakers.js" defer></script>
 </head>
 <body>
 <x-dc>
@@ -65,7 +66,20 @@
         <button type="button" onclick="{{ scrollToForm }}" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:center;padding:18px 36px;min-height:56px;border-radius:12px;background:linear-gradient(135deg,#FF6A00,#FF9152);color:#fff;font-family:'Host Grotesk',sans-serif;font-weight:700;font-size:16px;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(255,106,0,.35);transition:transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s" style-hover="transform:translateY(-2px);box-shadow:0 14px 42px rgba(255,106,0,.5)" style-focus="outline:2px solid #FF9152;outline-offset:3px">Quero participar</button>
         <p style="margin-top:16px;font-family:'DM Sans',sans-serif;color:#9a9a9a;font-size:13px;max-width:46ch;line-height:1.6">Ao se inscrever, você entra no grupo de WhatsApp do Advocacia de Sucesso e recebe lá os avisos e o acesso.</p>
       </div>
-      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-art" aria-label="Palestrantes">
+        <div class="sp-panel">
+          <img src="./assets/speaker-simao.webp" alt="Dr. Simão Rebelo" style="object-position:50% 14%">
+          <div class="sp-cap"><strong>Dr. Simão Rebelo</strong><span>Advogado previdenciarista</span><i class="sp-bar"></i></div>
+        </div>
+        <div class="sp-panel">
+          <img src="./assets/speaker-jhon.webp" alt="Jhon Gomes" style="object-position:50% 30%">
+          <div class="sp-cap"><strong>Jhon Gomes</strong><span>Especialista em vendas e marketing jurídico</span><i class="sp-bar"></i></div>
+        </div>
+        <div class="sp-panel">
+          <img src="./assets/speaker-odilon.webp" alt="Dr. Odilon Caetano Jr." style="object-position:50% 24%">
+          <div class="sp-cap"><strong>Dr. Odilon Caetano Jr.</strong><span>Sócio da CN Advogados Associados</span><i class="sp-bar"></i></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
