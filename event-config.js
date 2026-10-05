@@ -3,8 +3,8 @@
  * Edite só este bloco para plugar o evento em produção.
  */
 export const CONFIG = {
-  // Endpoint PHP que envia o e-mail (Brevo) e grava na planilha. Configuração em api/config.php.
-  API_URL: "./api/inscricao.php",
+  // Função da Vercel que envia o e-mail (Brevo) e grava na planilha. Chaves em variáveis de ambiente (.env.example).
+  API_URL: "/api/inscricao",
 
   // Link do grupo de WhatsApp já existente do Advocacia de Sucesso.
   GROUP_URL: "https://chat.whatsapp.com/JaOauBnZtcNJCrZVyGDAaw?s=cl&p=i&mlu=0&ilr=4",
@@ -59,7 +59,7 @@ export function getStoredUTMs() {
   }
 }
 
-// Envia a inscrição para o backend PHP (Brevo + planilha).
+// Envia a inscrição para a função /api/inscricao (Brevo + planilha).
 export async function submitInscricao(payload) {
   const res = await fetch(CONFIG.API_URL, {
     method: "POST",
