@@ -483,7 +483,7 @@ section[data-screen-label="Formulário"] h2 + p {
   margin-top: 26px !important;
 }
 section[data-screen-label="Formulário"] form {
-  background: rgba(255, 255, 255, .02) !important;
+  background: #0b0b0b !important;   /* opaco: o grid do fundo não aparece no form */
   border: 1px solid var(--line) !important;
   border-top: 2px solid var(--o) !important;
   border-radius: 2px !important;
