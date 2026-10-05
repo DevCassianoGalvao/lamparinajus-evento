@@ -183,7 +183,6 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   display: block; margin-top: 6px;
   font: 600 11px/1.4 var(--grot); letter-spacing: .14em; text-transform: uppercase; color: var(--o2);
 }
-@keyframes spBar { from { width: 0; } to { width: 100%; } }
 
 /* ativo: mesmo estilo quando o JS ainda não marcou ninguém (1º painel) */
 .hero-art:not([data-active]) .sp-panel:nth-child(1),
