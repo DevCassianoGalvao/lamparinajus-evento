@@ -153,6 +153,8 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   overflow: hidden;
   border-radius: 18px;
   background: #0d0d0d;
+  clip-path: inset(0 round 18px);   /* garante o corte arredondado da foto com transform */
+  isolation: isolate;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
   transition: flex-grow 1.1s cubic-bezier(.65, 0, .35, 1), box-shadow .6s;
   cursor: pointer;
@@ -169,6 +171,7 @@ section[data-screen-label="Hero"] [data-reveal] > p:last-of-type {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 72px 22px 22px;
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .88));
+  border-radius: 0 0 18px 18px;
   text-align: left;
   opacity: 0;
   transform: translateY(14px);
